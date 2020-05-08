@@ -1,0 +1,41 @@
+var collection = db.getCollection('schedules');
+
+var bulkOp = collection.initializeOrderedBulkOp();
+
+var count = 0;
+
+collection.find().forEach(function(doc) {
+    bulkOp.find({ '_id': doc._id }).updateOne({
+        '$set': { 'time': new Date(doc.time) }
+    });
+    count++;
+    if(count % 100 === 0) {
+        // Execute per 100 operations and re-init
+        bulkOp.execute();
+        bulkOp = collection.initializeOrderedBulkOp();
+    }
+});
+
+// Clean up queues
+if(count > 0) {
+    bulkOp.execute();
+}
+
+var userCollection = db.getCollection('users');
+var bulkOp = userCollection.initializeOrderedBulkOp();
+var count = 0;
+userCollection.find().forEach(function (doc) {
+  bulkOp.find(doc).updateOne({
+    '$set': {
+      'gender': "male"
+    }
+  });
+  count++;
+  if (count % 100 === 0) {
+    bulkOp.execute();
+    bulkOp = userCollection.initializeOrderedBulkOp();
+  }
+});
+if (count > 0) {
+  bulkOp.execute();
+}
