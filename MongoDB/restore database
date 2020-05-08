@@ -1,1 +1,3 @@
+//run cmd as adminstor
+
 mongorestore -d querytest c:\data\db\backups\querytest
