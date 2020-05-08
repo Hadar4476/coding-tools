@@ -1,0 +1,32 @@
+collection(users) structural:
+
+[
+{
+username: "hadar"
+},
+{
+username: "hadar"
+},
+{
+username: "hadar"
+},
+{
+username: "hadar"
+},
+{
+username: "amir"
+}
+]
+
+//delete one:
+
+db.users.remove({username:"hadar"},1)
+
+will delete the first one that follows the condition!
+although if I change the one to 2 or 3 or 10 nothing will happen, only one will get deleted.
+
+//delete many
+
+db.users.remove({username:"hadar"})
+
+not setting an integer after the object will give me the result of deleting all.
