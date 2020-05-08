@@ -16,7 +16,7 @@ is unique and its value equal to "hadar4476@gmail.com" now, if i try to set a
 
 value via $set to the same value but for another document i will get an error of duplicate_key error.
 
-let try: db.users.update({username:"Saidden"},{$set{email:"hadar4476@gmail.com"}})
+let try: db.users.update({username:"Saidden"},{$set:{email:"hadar4476@gmail.com"}})
 
 * an error accored
 
