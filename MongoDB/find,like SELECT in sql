@@ -1,1 +1,11 @@
+//find all:
+
 db.collection.find()
+
+//find one:
+
+db.collection.findOne()
+
+//find by index:
+
+db.collection.find()[0]
