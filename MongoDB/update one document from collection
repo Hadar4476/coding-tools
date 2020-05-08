@@ -1,0 +1,22 @@
+db.users.update( {name: "Shimi"} , { $set: {password: "33221100"} } )
+
+//db.(collection-name).update
+
+//inside the update method name stands for the key/ property I want to update(like WHERE in sql)
+
+//$set is to set a certain key/property to other value in that case password is the key.
+
+//if the key/property I would like to set does not exists, mongo will write a new key with the given value.
+
+//example for setting a value of a unique key with the same value of another document:
+
+//as I know the email key/property that is related to the username:"Hadrame" 
+
+is unique and its value equal to "hadar4476@gmail.com" now, if i try to set a 
+
+value via $set to the same value but for another document i will get an error of duplicate_key error.
+
+let try: db.users.update({username:"Saidden"},{$set{email:"hadar4476@gmail.com"}})
+
+* an error accored
+
