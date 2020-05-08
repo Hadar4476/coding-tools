@@ -1,0 +1,1 @@
+mongodump --db querytest --out c:\data\db\backups
