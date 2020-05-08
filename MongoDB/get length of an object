@@ -1,0 +1,38 @@
+let arr = [
+{ 
+title: 'This is my third ad', 
+description: 'This is a text demo description', 
+by: 'Hadar Yamin', status: 1, is_published: "" 
+}, 
+{ 
+title: 'This is my fourth ad', 
+description: 'This is a text demo description', 
+by: 'Hadar Yamin', 
+status: 0,
+is_published: false 
+}, 
+{ 
+title: 'This is my fifth ad', 
+description: 'This is a text demo description', 
+by: 'Hadar Yamin' 
+},
+{ 
+title: 'This is my sixth ad', 
+description: 'This is a text demo description', 
+by: 'Hadar Yamin', status: 1, is_published: "" 
+} 
+]
+
+arr.map(collection => { 
+if (Object.keys(collection).length < 5) { 
+console.log(Object.keys(collection).length); 
+collection.status = 0; 
+collection.is_published = false; 
+console.log(collection); 
+} 
+if (collection.status == 1) { 
+collection.is_published = true; 
+console.log(collection); 
+} 
+})
+
