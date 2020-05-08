@@ -1,0 +1,1 @@
+mongorestore -d querytest c:\data\db\backups\querytest
