@@ -1,0 +1,33 @@
+because mongo is schemaless,the process of creating and inserting is much easier.
+unless sql that you need to follow by certain steps before you can move on to other steps(multiple line of code)
+
+creating in sql:
+
+access to the mysql with mysql powershell first:
+
+mysql -u root -p
+*press enter twice
+
+CREATE DATABASE test
+ 
+ USE test
+ 
+ CREATE TABLE table_for_test
+ (id int(11) NOT NULL,
+ title varchar(255) NOT NULL,
+ body text NOT NULL,
+ is_published tinyint(1) NOT NULL);
+ 
+* in the examples below I can see that first I need to create a database and than use it but with mongo I can just type "use test"
+  and what will happen is mongo will reconise that this database dosen't exist and will create a new one plus will 
+  give me access to use it right away so i can create collection and fill it with information.
+  
+* same thing with inserting into a table, in sql i can't create a table without setting columns to it.
+  if I would like to create a collection in mongo with db.createCollection("collection_for_test") I won't get an error,
+  the collection is created but there is nothing inside unlike sql that won't even create it.
+
+* I can create a collection in mongo with "db.createCollection("some_collection") and 
+  than type "db.some_collection.insert(Array/Object)", *but* there is another, simple way to create and insert:
+
+- db.some_collection.insert(Array/Object);
+
