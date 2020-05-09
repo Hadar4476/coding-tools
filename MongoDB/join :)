@@ -1,0 +1,160 @@
+db.leftcollection.aggregate(
+  [{
+    $lookup: {
+      from: "rightcollection",
+      localField: "leftcollectionfield",
+      foreignField: "rightcollectionfield",
+      as: "some name"
+    }
+  }]).pretty()
+  
+  for example:
+  
+db.users.find() will give me this:
+[
+{
+    "_id": 1,
+    "username": "Hadrame",
+    "password": "Vsr7055ty41",
+    "email": "hadar4476@gmail.com",
+    "is_male": true,
+    "is_female": false,
+    "gender": "male"
+  },
+  {
+    "_id": 2,
+    "username": "Saidden",
+    "password": "Amir8699377",
+    "email": "amir412@gmail.com",
+    "is_male": true,
+    "is_female": false,
+    "gender": "male"
+  },
+  {
+    "_id": 3,
+    "username": "Mittinga",
+    "password": "yossiShaish1234",
+    "email": "yossishaish@gmail.com",
+    "is_male": true,
+    "is_female": false,
+    "gender": "male"
+  },
+  {
+    "_id": 4,
+    "username": "Vidran",
+    "password": "vidraN8699377",
+    "email": "vandervidi@gmail.com",
+    "is_male": true,
+    "is_female": false,
+    "gender": "male"
+  },
+  {
+    "_id": 5,
+    "username": "RonYam",
+    "password": "roN8699377",
+    "email": "ronyam@gmail.com",
+    "is_male": true,
+    "is_female": false,
+    "gender": "male"
+  },
+  {
+    "_id": 6,
+    "username": "HemdaYam",
+    "password": "hemdA8699377",
+    "email": "hemdayam@gmail.com",
+    "is_male": false,
+    "is_female": true,
+    "gender": "female"
+  },
+  {
+    "_id": 7,
+    "username": "ReuvenYam",
+    "password": "reuveN8699377",
+    "email": "reuvenyam@gmail.com",
+    "is_male": true,
+    "is_female": false,
+    "gender": "male"
+  }
+]
+
+db.posts.find() will give me this:
+
+[
+{
+    _uid: 1,
+    pusblished: Date.now(),
+    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce eu convallis lorem. Donec fringilla metus pellentesque imperdiet dictum. Morbi ultricies."
+  },
+  {
+    _uid: 2,
+    pusblished: Date.now(),
+    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In egestas, justo vel suscipit tempor, diam augue convallis turpis, in elementum"
+  },
+  {
+    _uid: 3,
+    pusblished: Date.now(),
+    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur tellus ac nibh finibus posuere. Donec ultrices mi vitae neque."
+  },
+  {
+    _uid: 4,
+    pusblished: Date.now(),
+    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris aliquet massa et tortor malesuada, vitae posuere nulla semper. Aliquam erat."
+  },
+  {
+    _uid: 5,
+    pusblished: Date.now(),
+    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras vehicula suscipit eros volutpat aliquam. Sed sit amet lobortis nisl, ac."
+  },
+  {
+    _uid: 6,
+    pusblished: Date.now(),
+    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque imperdiet ex augue, at vulputate libero consequat sit amet. Proin id."
+  },
+  {
+    _uid: 7,
+    pusblished: Date.now(),
+    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent gravida pellentesque turpis, id eleifend ligula placerat eget. Vestibulum at augue."
+  },
+  {
+    _uid: 1,
+    pusblished: Date.now(),
+    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam nec ultricies magna. Nam maximus erat eu convallis sagittis. Donec mollis."
+  },
+  {
+    _uid: 2,
+    pusblished: Date.now(),
+    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent gravida pellentesque turpis, id eleifend ligula placerat eget. Vestibulum at augue."
+  }
+]
+
+**********THE MAGIC***********
+for join I need to use the following coding:
+
+db.users.aggregate(
+  [{
+    $lookup: {
+      from: "posts",
+      localField: "_id",
+      foreignField: "_uid",
+      as: "postsByUser"
+    }
+  }]).pretty();
+
+and now, I can insert all of this to another collection but drop the pretty at the end:
+
+
+db.postsByUsers.insert(
+  db.users.aggregate(
+    [{
+      $lookup: {
+        from: "posts",
+        localField: "_id",
+        foreignField: "_uid",
+        as: "postsByUser"
+      }
+    }])
+)
+
+
+
+
