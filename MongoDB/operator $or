@@ -1,0 +1,20 @@
+The operator $or is for checking multiply options for values inside fields and getting the documents with those values.
+
+ db.ads.find({$or:[{"ticketPrice": 10}, {"title": "demo text"}]}).pretty()
+ 
+ result:
+
+{
+
+        "_id" : ObjectId("5eb5c40f560849b8e89ea639"),
+        "title" : "Shanti banti drums",
+        "description" : "Text foo bla bla shanti banti drums",
+        "tags" : [
+                "shanti",
+                "drums"
+        ],
+        "showDate" : "2017-07-23T16:23:42.389Z",
+        "ticketPrice" : 10,
+        "place" : "Galil area"
+}
+ 
