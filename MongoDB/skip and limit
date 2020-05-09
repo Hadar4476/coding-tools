@@ -1,0 +1,33 @@
+skip and limit are for setting starting and ending points.
+the skip is for how many documents we want to skip until we start getting information
+and limit is for how many documents we want to get after the skipping point.
+
+db.ads.find().limit(2).skip(1).pretty()
+
+result:
+
+{
+        "_id" : ObjectId("5eb5c40f560849b8e89ea639"),
+        "title" : "Shanti banti drums",
+        "description" : "Text foo bla bla shanti banti drums",
+        "tags" : [
+                "shanti",
+                "drums"
+        ],
+        "showDate" : "2017-07-23T16:23:42.389Z",
+        "ticketPrice" : 10,
+        "place" : "Galil area"
+}
+{
+        "_id" : ObjectId("5eb5c40f560849b8e89ea63a"),
+        "title" : "Infected mushroom return to the sauce",
+        "description" : "Infected mushroom best show ever",
+        "tags" : [
+                "psy",
+                "electric",
+                "pop"
+        ],
+        "showDate" : "2015-09-06T22:00:42.389Z",
+        "ticketPrice" : 63,
+        "place" : "Haoman 17 jerusalem"
+}
