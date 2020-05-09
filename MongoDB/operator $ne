@@ -1,0 +1,47 @@
+The operator $ne is equal to !=(not equal)
+In the example below I want to get all the documents that their ticketPrice value is not equal to 63.
+
+
+db.ads.find( {"ticketPrice": {$ne:63} } ).pretty()
+
+result:
+
+{
+        "_id" : ObjectId("5eb5c40f560849b8e89ea638"),
+        "title" : "POP show in Tel Aviv",
+        "description" : "An article demo for show in tel aviv",
+        "tags" : [
+                "pop",
+                "rock",
+                "cool shows"
+        ],
+        "showDate" : "2016-02-10T10:50:42.389Z",
+        "ticketPrice" : 25,
+        "place" : "Nokia palace tel aviv"
+}
+{
+        "_id" : ObjectId("5eb5c40f560849b8e89ea639"),
+        "title" : "Shanti banti drums",
+        "description" : "Text foo bla bla shanti banti drums",
+        "tags" : [
+                "shanti",
+                "drums"
+        ],
+        "showDate" : "2017-07-23T16:23:42.389Z",
+        "ticketPrice" : 10,
+        "place" : "Galil area"
+}
+{
+        "_id" : ObjectId("5eb5c40f560849b8e89ea63b"),
+        "title" : "Rock with metallica",
+        "description" : "Best rock show in tel aviv",
+        "tags" : [
+                "rock",
+                "pop",
+                "metal",
+                "havy metal"
+        ],
+        "showDate" : "2016-02-17T21:30:42.389Z",
+        "ticketPrice" : 52,
+        "place" : "Yarkon tel aviv"
+}
