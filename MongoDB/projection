@@ -25,3 +25,14 @@ result:
         "title" : "Rock with metallica"
 }
 
+*NOTICE* I got an additional field called "_id", simply if I want to get only one field without the "_id" field I will type this:
+
+ db.ads.find({}, {"title": 1, _id: 0}).pretty()
+ 
+ result:
+ 
+{ "title" : "POP show in Tel Aviv" }
+{ "title" : "Shanti banti drums" }
+{ "title" : "Infected mushroom return to the sauce" }
+{ "title" : "Rock with metallica" }
+
