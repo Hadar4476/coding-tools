@@ -1,0 +1,27 @@
+What is projection?
+
+projection is a term which I would like to get values of a certain field but only get these fields if they are exists.
+
+db.ads.find({}, {"title": 1}).pretty()
+
+// the 1 stand for true - if exists find all the documents that have this field but only the value of this specific field 
+   and not all the fields.
+   
+result:
+{
+        "_id" : ObjectId("5eb5c40f560849b8e89ea638"),
+        "title" : "POP show in Tel Aviv"
+}
+{
+        "_id" : ObjectId("5eb5c40f560849b8e89ea639"),
+        "title" : "Shanti banti drums"
+}
+{
+        "_id" : ObjectId("5eb5c40f560849b8e89ea63a"),
+        "title" : "Infected mushroom return to the sauce"
+}
+{
+        "_id" : ObjectId("5eb5c40f560849b8e89ea63b"),
+        "title" : "Rock with metallica"
+}
+
