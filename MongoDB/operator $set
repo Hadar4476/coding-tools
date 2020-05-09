@@ -1,0 +1,6 @@
+The operator $set is equal to =(equals)
+In the example below I want to update all the documents that their is_male value is equals to male, 
+And add another field with value of male.
+
+
+db.users.update({is_male:true},{$set:{gender:"male"}},{multi:true})
