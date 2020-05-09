@@ -1,0 +1,32 @@
+The operator $it is equal to >(less than)
+In the example below I want to get all the documents that their ticketPrice value is less that 52.
+
+db.ads.find( {"ticketPrice": {$lt:52} } ).pretty()
+
+result:
+
+{
+        "_id" : ObjectId("5eb5c40f560849b8e89ea638"),
+        "title" : "POP show in Tel Aviv",
+        "description" : "An article demo for show in tel aviv",
+        "tags" : [
+                "pop",
+                "rock",
+                "cool shows"
+        ],
+        "showDate" : "2016-02-10T10:50:42.389Z",
+        "ticketPrice" : 25,
+        "place" : "Nokia palace tel aviv"
+}
+{
+        "_id" : ObjectId("5eb5c40f560849b8e89ea639"),
+        "title" : "Shanti banti drums",
+        "description" : "Text foo bla bla shanti banti drums",
+        "tags" : [
+                "shanti",
+                "drums"
+        ],
+        "showDate" : "2017-07-23T16:23:42.389Z",
+        "ticketPrice" : 10,
+        "place" : "Galil area"
+}
