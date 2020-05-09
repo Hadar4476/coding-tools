@@ -1,0 +1,10 @@
+example for getting the fields and values of: title,ticketPrice (ONLY) if the ticketPrice of those document is 
+greater than and equal to 20, get only 2 with limit, sort(order) them by ticketPrice in ASC order.
+
+db.ads.find({"ticketPrice": { $gte: 20 }}, {"title": 1, "ticketPrice":1, _id: 0}).limit(2).sort({"ticketPrice": 1}).pretty()
+
+result:
+
+{ "title" : "POP show in Tel Aviv", "ticketPrice" : 25 }
+{ "title" : "Rock with metallica", "ticketPrice" : 52 }
+
