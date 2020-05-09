@@ -1,0 +1,18 @@
+If I would like to add some conditions for the information I need I can type a condition.
+
+for example, If I want to get a field of a document, in this case "ticketPrice", 
+that its value is greater than and equal to 52($gte), afterwards I want to get only the following field:
+"title" and "ticketPrice" but not an additional "_id".
+
+db.ads.find({"ticketPrice": { $gte: 52 }}, {"title": 1, "ticketPrice":1, _id: 0}).pretty()
+
+result:
+
+{ 
+  "title" : "Infected mushroom return to the sauce", 
+  "ticketPrice" : 63 
+}
+{ 
+  "title" : "Rock with metallica", 
+  "ticketPrice" : 52 
+}
