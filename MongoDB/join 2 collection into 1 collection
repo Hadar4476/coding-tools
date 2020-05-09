@@ -1,0 +1,10 @@
+db.users.aggregate(
+  [{
+    $lookup: {
+      from: "posts",
+      localField: "_id",
+      foreignField: "_uid",
+      as: "postsByUser"
+    }
+  },{$out:"postsByUsersDemo"}]
+  )
