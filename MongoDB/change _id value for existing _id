@@ -1,0 +1,8 @@
+doc = db.users.findOne({
+  _id: ObjectId("5eb53562cf0220b3e0d939bb")
+})
+doc._id = 7
+db.users.remove({
+  _id: ObjectId("5eb53562cf0220b3e0d939bb")
+})
+db.users.insert(doc)
