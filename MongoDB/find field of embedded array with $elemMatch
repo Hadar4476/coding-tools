@@ -1,0 +1,5 @@
+db.stocks.find({instock:{$elemMatch:{qty:{$gt:30},warehouse:"A"}}}).pretty()
+
+Like:
+
+db.stocks.find({'instock.qty':{$gt:30},'instock.warehouse':'A'}).pretty()   
