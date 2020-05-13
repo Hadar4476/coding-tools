@@ -1,0 +1,9 @@
+Check if a field value type is equal to string,double etc.
+
+link for all types:
+
+https://docs.mongodb.com/manual/reference/bson-types/
+
+check if a field value type is equal to string:
+
+db.users.find({username:{$type:2}})
