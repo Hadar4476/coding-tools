@@ -4,11 +4,11 @@ First a require must be made:
 
 Then I need to start the method createServer like this:
 
-=> http.createServer();
+=> const server = http.createServer();
 
 This method will take an anonymous function with 2 parameters:
 
-=> http.createServer((req,res)=>{});
+=> const server = http.createServer((req,res)=>{});
 
 "req" parameter stand for request, this paramter is responsible for 
 the option that a request is going to enter to my NodeJS server, I can get
@@ -16,7 +16,7 @@ that request details with the "req" paramter, such as like:
 - what did the user actually wants?
 - which browser the user is using?
 - what is the user IP?
-- what system software is the user using?
+- what operating system is the user using?
 
 
 "res" parameter stands for response,
@@ -36,7 +36,7 @@ usually when the user wants some response back he sand a request to some URL:
 I can decide what to give to the user depend on the URL he requested.
 for example if user wants the end-point of "/":
 
-  http.createServer((req,res)=>{
+  const server = http.createServer((req,res)=>{
   => if(req.url == "/"){
   
   }
@@ -44,7 +44,7 @@ for example if user wants the end-point of "/":
   
 I want to return the following response(res);
 
-  http.createServer((req,res)=>{
+  const server = http.createServer((req,res)=>{
   if(req.url == "/"){
   => res.writeHead(200, {"Content-Type": "text/plain"});
   => res.write("Hello World");
@@ -61,6 +61,51 @@ that the status is 200 - means that its alright for requesting that URL.
 I also want to send some text/message to the browser/user "Hello Write".
 
 Now I want NodeJS to listen to this request so it can give it a response.
+I can do this with typing:
 
-stopped at node_js_9 time 10:16.
+=> server.listen(3000);
+
+the reason why I want NodeJS to listen to port 3000 in http(port:80) is because
+in real servers the operating systems don't recognize as a web server. the http request
+that was sent from the browser I need to make a reference to that request in NodeJS,
+NodeJS can't listen to port 80 because the http request is already listening to that,
+we need to make NodeJS listening to other port, like: 3000.
+
+In this stage if I go on and type "localhost:3000" so I can reach my app,
+nothing will display because I need to run this app with "node app" in NodeJS.
+
+afterwards I can see in the cmd/terminal that the thread didn't stop, its still running!
+also going back to localhost:3000 the page is always in loading state = stuck(hangup).
+for browser side to understand that I want to display "Hello World" and actually making it
+stop waiting and responding, I need to add:
+
+ => res.end();
+ 
+means "we are done here" - to the browser: "don't expect for nothing else thats it".
+
+after adding the code which looks like this:
+
+  const server = http.createServer((req,res)=>{
+  if(req.url == "/"){
+    res.writeHead(200, {"Content-Type": "text/plain"});
+    res.write("Hello World");
+ => res.end();
+  }
+  });
+  
+  server.listen(3000);
+  
+I need to restart the app in the cmd/terminal,
+because I also want to restart the server's processor with the new changes
+so it can start a new thread!
+
+to actually getting some indication that NodeJS is listening to port 3000 I can add
+an anonymous function to server.listen() and log that NodeJS is currently listening to that port.
+
+  server.listen(3000,()=>{
+=> console.log("server start at port 3000")
+  });
+
+
+
 
