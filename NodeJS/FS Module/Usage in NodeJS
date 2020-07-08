@@ -1,0 +1,48 @@
+For starters I need to require fs with:
+
+=> const fs = require("fs");
+  
+then I can use writeFile() method to actually
+create a file and write the content in it.
+
+=> fs.writeFile("something.txt","some text");
+
+additionaly I won't to add an anonymous function which
+will return an err if the file didn't manage to create.
+
+=> fs.writeFile("something.txt","some text",err =>{
+   if (err) console.log("File failed to create");
+   else console.log("File created successfully");
+});
+
+If I want to response a user with some sort of html file 
+I can use fs module like this:
+
+   const http = require("http");
+=> const fs = require("fs");
+  
+   const server = http.createServer((req, res) => {
+     if (req.url == "/") {
+      res.writeHead(200, { "Content-Type": "text/html" });
+=>    const data = fs.createReadStream(__dirname + "/index.html");
+=>    data.pipe(res);
+    }
+   });
+  
+   server.listen(3001, () => {
+    console.log("connected to server at port 3001");
+   });
+   
+line 22: requiring the module,
+
+line 27: implementing a method of fs called createReadStream in a var,
+         using this method will actually be useful cause now the response
+         dosen't need to wait for all the html file to load and then sending it 
+         to the browser, it will behave like a loading video, stream which can take
+         a piece by piece and loading it besides waiting for the whole html(video)
+         to load and then display/send(show) it.
+         
+         this method takes the direction name of the file and the file name + ext.
+line 28: I'm using a pipe for this stream to make some sort of route for it.
+         and then sending the response.
+  
