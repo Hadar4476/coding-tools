@@ -1,0 +1,65 @@
+First a require must be made:
+
+=> const http = require("http");
+
+Then I need to start the method createServer like this:
+
+=> http.createServer();
+
+This method will take an anonymous function with 2 parameters:
+
+=> http.createServer((req,res)=>{});
+
+"req" parameter stand for request, this paramter is responsible for 
+the option that a request is going to enter to my NodeJS server, I can get
+that request details with the "req" paramter, such as like:
+- what did the user actually wants?
+- which browser the user is using?
+- what is the user IP?
+- what system software is the user using?
+
+
+"res" parameter stands for response,
+now if I will want to send the user a response I can use the "res" parameter.
+after createServer is running I can get all the response abilities of NodeJS.
+
+for example I can send:
+- some text
+- some html
+- etc
+
+usually when the user wants some response back he sand a request to some URL:
+- homepage
+- about
+- contact
+- etc
+I can decide what to give to the user depend on the URL he requested.
+for example if user wants the end-point of "/":
+
+  http.createServer((req,res)=>{
+  => if(req.url == "/"){
+  
+  }
+  });
+  
+I want to return the following response(res);
+
+  http.createServer((req,res)=>{
+  if(req.url == "/"){
+  => res.writeHead(200, {"Content-Type": "text/plain"});
+  => res.write("Hello World");
+  }
+  });
+  
+* res.writeHead(200, {"Content-Type": "text/plain"})?
+
+I can send a response to the header which the browser will recieve and telling it 
+that the status is 200 - means that its alright for requesting that URL.
+
+* res.write("Hello World");
+
+I also want to send some text/message to the browser/user "Hello Write".
+
+Now I want NodeJS to listen to this request so it can give it a response.
+
+
