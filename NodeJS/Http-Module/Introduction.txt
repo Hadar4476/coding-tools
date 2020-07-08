@@ -1,0 +1,4 @@
+The HTTP module is a built-in module of NodeJs,
+This module can help creating a server that will listen to http requests.
+
+This module is a child-class of eventEmitter.
