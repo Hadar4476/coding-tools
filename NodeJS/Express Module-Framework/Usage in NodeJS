@@ -1,0 +1,18 @@
+After installing express I can use it in my app.js file like this:
+
+=> const express = require('express');
+=> const app = express();
+ 
+=> app.get('/', (req, res) => {
+=>  res.send('Hello World');
+=> });
+   
+=> app.listen(3000, () => console.log('server works!'));
+
+starting the application will give me:
+
+=> server works // in terminal
+
+going to localhost:3000 will give me:
+
+=> Hello World // in page
