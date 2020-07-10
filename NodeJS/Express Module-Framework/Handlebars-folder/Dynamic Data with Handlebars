@@ -1,0 +1,76 @@
+Not only I can load a html file I can also pass a dynamic data with
+the render method.
+
+the render method takes as second argument a literal object:
+
+  app.get("/contact", (req, res) => {
+=>  res.render("contact", { });
+  });
+  
+inside that object I can pass a key which will have to be called from outside
+the same as I could it here, after that I will have to pass that key some value.
+so lets say I want to show the user a list of emails in the contact page,
+so he can get more information or help if he need to.
+
+first creating an array of emails:
+
+  app.get("/contact", (req, res) => {
+=>  let emails = [
+    "hadar4476@gmail.com",
+    "ido434@gmail.com",
+    "nadav12345@gmail.com",
+     ];
+    res.render("contact", { });
+  });
+  
+passing the emails array to a key in the literal object:
+
+  app.get("/contact", (req, res) => {
+    let emails = [
+    "hadar4476@gmail.com",
+    "ido434@gmail.com",
+    "nadav12345@gmail.com",
+     ];
+=>  res.render("contact", { emails: emails });
+  });
+  
+  now for the usage inside contact.handlebars file:
+  
+  _______________________________________________________________________________________________________
+  
+  <div class="container">
+    <div class="col-12 mt-3 d-flex text-center justify-content-around">
+        <div>
+            <h1 class="display-3">Contact Us Page</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, exercitationem!</p>
+        </div>
+        <div class="text-left">
+=>          {{# if emails}}
+            <h1>Our Support:</h1>
+            <ul class="list-group col-12">
+=>              {{# each emails}}
+=>                <li class="list-group-item">{{ this }}</li>
+=>              {{/each}}
+            </ul>
+=>           {{else}}
+            <h1 class="d-none"></h1>
+=>          {{/if}}
+        </div>
+    </div>
+</div>
+
+_______________________________________________________________________________________________________
+
+  
+line 48: the condition if this part inside contact.handlebars should be displayed, in that case
+         if emails is truthy values which means if the array isn't empty, procceed.
+line 51: starting the loop to display each one of the email inside the emails array.
+line 52: implementing that email inside a <li> tag.
+line 53: finishing the loop.
+line 55: what to do if emails has a falsey value? in that case I just displated a <h1> with class
+         of d-none but the else statement is more suitable for situations you want to display something 
+         else - not just an empty element cause by default,in that cause, it will only show something
+         if the emails are truthy.
+line 57: finishing the if condition.
+  
+  
