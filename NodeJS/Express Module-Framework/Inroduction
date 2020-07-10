@@ -1,0 +1,17 @@
+Express is a very popular framework in NodeJS, which allows
+programmers to build a web app easily and conveniently with some build-in
+tools in express.
+to create uniformity and one known way for programming in teams, it's common
+to use a framework. so thats why express is the most popular framework within
+NodeJS for programmers(12m downloads a week). express includes many modules for writing
+code and building a project in very fast and convenient way(instead of building everything from
+scratch). this framework also called "ecosystem" - it does not perfect and also it does not 
+include all the tools, but, you can always download additional modules or libraries for your
+desires.
+
+the most popular option that express suggest us is to build our own web server for the site/project
+in a very organized and readable way with only few lines of code. 
+
+how to install? 
+
+=> npm i express
