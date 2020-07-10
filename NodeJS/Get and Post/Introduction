@@ -1,0 +1,32 @@
+In general the get method is sending a request to the server for getting data and
+the post is for sending the data- changing an existing data and saving it.
+
+it is possible to pass the server data for processing with the get method.
+this data is passed as query string, however data that is passed with the
+post method are not passed as query string but through a special mechanism
+called "form-data"(WSH).
+
+it is possible to pass data with the get method to the server with a length 
+of 2000-3000 characters only, however, with the post method it is possible to
+pass a much larger length of characters(depends with the server settings), usually
+8mb.
+
+in the classic way, for me to pass a file from the user pc(example: profile image),
+it is possible only with the post method. why?
+the get method is limited to 2000-3000 characters only.
+
+data that is passed to the server with the get method, is automatically saved in the 
+browser's history, additionally that data is possible to save in the favorites(bookmarks).
+
+the get method is faster than the post method. why is that?
+data that is passed with get method is passed inside a URL which this method is built from.
+however, for data to be passed with the post method a special mechanism is needed - in clinet side
+and server side.
+
+when get method?
+for forms like searching products, flights, data, images etc. why?
+- to give the user an option to save the searched data in favorites(bookmarks).
+- get is faster than post.
+- for form - there are no sensetive information(example: credit card).
+
+when post method?
