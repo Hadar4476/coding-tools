@@ -1,0 +1,36 @@
+lets say that I have a main file which contains a navbar
+and I want to give the user an access to navigating through several path and in
+these paths I will response the user with a certain html file.
+
+a good example will be lets say I have a navbar with:
+- home
+- about
+- contact us
+
+I want the user to stay inside my main page but when clicking about he will get
+the about.html file. that is why I need handlebars template here.
+
+After installing handlebars with npm i express-handlebars, in my App.js I need to require
+some modules:
+
+=> const express = require("express");
+=> const exphbs = require("express-handlebars");
+
+in Line 18: 
+   I'm actually requiring the handlebars framework from express.
+   
+=> const app = express();
+
+=> app.engine("handlebars",exphbs());
+
+line 25: In this line i'm telling express which engine it should use,
+         in that case: handlebars as string which will decide the name of that framework. 
+         the engine method also take a reuirement of the actual framework: in that case:
+         exphbs();
+      
+      
+=> app.set("view engine","handlebars");
+
+line 33: In this I'm setting the view engine that I want to use as handlebars.
+
+for more see ""
