@@ -1,0 +1,73 @@
+Forms are necessary for passing data from the broswer to my code/server etc.
+More importantly is: search engines and programs that are suppose to help
+to disable people have detection capability for the site elements.
+
+for example:
+
+   <form>
+=> <label>Your Fullname:</label>
+   <input type="text">
+   </form>
+
+the search engine and those helpful programs knows that <label> tags are connected to <input> tags.
+if instead of  the <label> tag I will place a <span> tag, this span won't be connected
+to that input.
+
+how can the search engine/ programs will know that my <label> tag is connected to my <input> tag?
+
+with the attribute "for" I can attach the <input> tag's ID to the <label> tag like this:
+
+  <form>
+=> <label for="fullname">Your Fullname:</label>
+=> <input type="text" id="fullname">
+   </form>
+   
+how will I know if those elements are connected?   
+by click on the label element in the website I can see that as soon as I click,
+I can transferred to the input field.
+
+that is very important because some people dosen't have the ability to see how the
+website is built or they can't use the mouse, so they use the TAB key or some program
+to help them with reading the website. so if someone is using the TAB key
+once he will get to the <label> tag and click TAB again he will transferr to the input field
+because they are connected by the "for" attribute.
+
+for people that aren't able to see my website(blind) there are special programs that
+can read for them the contant in my website. so if a blind person gets to the <label>
+tag, the program will read it for the person as "<input> tag's field", for example in the
+example above it will be: "fullname's field" so he/she will know that he/she needs to fill
+their fullname.
+
+sometimes when I will take the services of a graphic designer he/she will tell me that
+there is no space in the website for the label, so how can I fix that?
+
+I can just set a label tag but giving it with style or class "display-none"/"d-none",
+from the dom point of view it won't show but for the search engine it will. I can also place
+a placeholder like "Please Enter Fullname Here" for the graphic designer request.
+
+required attribute, what is that?
+
+this attribute will prevent the submiting of the form if this attribute sits
+on some input tag and if that input tag is empty the submiting will cancel and 
+alert that it must be filled.
+
+In the default behavior of HTML5, if I'm using a form it will validate the fields.
+why would I want to prevent the validation of HTML5 form?
+imagine a situation which a hacker can go to my website click on inspect mode,
+and start editing my html:
+for example, he will edit the type of my email-input to text, delete the require from other
+input etc. the changes he made only apply to his browser that's ok but if he can edit the elements,
+he can get around the validation of HTML5 form and send empty fields to my server.
+
+how can I slove this?
+novalidate attribute, what is that?
+
+it means that I tell the HTML5 form, don't do your validate I will handle the validate.
+usage:
+
+=> <form novalidate="novalidate">
+
+
+
+
+
