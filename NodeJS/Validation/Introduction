@@ -1,0 +1,27 @@
+There is alot to take into consider when dealing with forms's validations. 
+first, there are types of validations for certain websites.
+let say that a government organization's website wants the user to enter
+a fullname, because the information must be accurate the user can't
+enter something like "blabla 23" in the fullname field. this type of
+form will need to get through a tight validation system which will check 
+the fields in a more strict way.
+in the other hand, a website which the form isn't really requiring sensetive
+and important data from the user, I can use a more loose way of validation
+so the user for example can type "blabla 13".
+
+why validation only on both client-side and server-side?
+
+for 99.9% of the people that are using websites validation isn't something
+they are familiar with, they don't know how to code or even go into inspect mode.
+put for that 0.1% that knows, there is always a risk for hackers. so if my 
+validation only applies on the client-side, some hackers can go around it with 
+the console and just send me a false data but if I also check the data in the server
+side - the hackers can't reach that and it will prevent them from sending me a falsey data.
+
+why not server-side validation only?
+
+becuase it's faster in client-side.
+
+which library is good for validations?
+
+jquery validate: https://jqueryvalidation.org/
