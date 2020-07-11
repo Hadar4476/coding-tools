@@ -1,0 +1,8 @@
+what are the important considerations the I need to keep in mind while
+working with forms in development start?
+
+- search engines.
+- people with disabilities(accessibility).
+- proper standardization according to W3C roles(conventions).
+- suitability for mobile.
+- functionality considerations.
