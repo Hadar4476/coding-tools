@@ -1,0 +1,12 @@
+FIrst, if I download express with npm i express - the body-parser module is already in there.
+I can require it like this:
+
+=> const bodyParser = require("body-parser");
+
+now I can call the use method so I can actually use it like this:
+=> app.use(bodyParser.urlencoded({ extended: false }));
+
+the urlencoded actually takes the data and passing it as literal object,
+the "extended" property is for telling the parser to parse only the form data not every data.
+
+now I will be able to console.log(req.body) and get the data.
