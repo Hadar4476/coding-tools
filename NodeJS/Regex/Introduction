@@ -1,0 +1,6 @@
+Regular expressions are designed to code or replace strings or extract strings
+from a string by placing a template that meets certain criteria and estimating
+that we do not know the value but only the template that the string is supposed to be.
+Most modern programming languages, such as javascript, php, nodejs, mysql and more,
+have adopted the Perl Compatible Regular Expressions (PCRE) standard. means,
+the syntax of the perl language: the markers and templates of the regular expressions.
