@@ -1,0 +1,2 @@
+404 page is commonly used for pages that can't be reached, means that the status code
+of the browser request is 404(can't response with a page because it doesn't exist).
