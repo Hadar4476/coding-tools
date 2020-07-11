@@ -1,0 +1,52 @@
+First, requiring:
+
+=> const Joi = require("@hapi/joi");
+
+now with this I can create a schema for the validation, means that if I set
+certain properties/field names in the schema they are they are only the only
+ones available to validate therfore the only ones to get sent to the server with post.
+
+for the contact's schema I can type something like this:
+
+=> const contactSchema = Joi.object({
+=>   fullname_field: Joi.string().required().min(2).max(70),
+=>   email_field: Joi.string().required().email(),
+=>   phone_field: Joi.number().integer().min(9),
+=> });
+
+line 14: Joi.object is a method that takes as argument an object.
+line 15,16 & 17 (start): the name of the inputs which I validate in the script.js file.
+Joi.string() = what should be the value of that property, in this case a string.
+Joi.number() = in this case a number type.
+.required() = the proccess won't continue until this field is filled according to the terms I set.
+.min(number) = what is the minimun length of this value?
+.max(number) = what is the maximum length of this value?
+.email() = is for email fields, to tell Joi - treat this field as type email and validate it with "@" etc.
+.integer() = this field will be of integers.
+
+lets say that now I want to check some data that was posted to my server by some path, and tell Joi to 
+check if that data which I received matches the schema I created.
+
+=> app.post("/contact", (req, res) => {
+=>   const { error, value } = contactSchema.validate(req.body);
+=>   if (!error) {
+=>     res.render("thanks", {
+=>       title: "Thank You",
+=>       fullname: value.fullname_field,
+=>     });
+=>   } else {
+=>     console.log(error);
+=>     res.render("contact", {
+=>       title: "Contact",
+=>       emails: emails,
+=>     });
+=>   }
+=> });
+
+line 31: I'm using object destructuring for getting two object: value and error.
+         this schema I just created has a validate method which receives the req.body
+         and checks if its matches the schema.
+line 32-36: if error is falsey, means "its all goode"(no errors accured) response with the render method,
+         render "thanks.handlebars" file, pass title value to "main.handlebars" and the fullname which contains
+         value.fullname_field which is the property of the value object.
+line 37: if an error accord keap the user in the same page, don't continue. 
