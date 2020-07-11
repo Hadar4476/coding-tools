@@ -1,0 +1,38 @@
+First in the views folder of NodeJS I will create "404page.handlebars" file which
+will hold contant for the user if the page was not found, something like this:
+
+_____________________________________________________________
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="text-danger">Error 404:</h1>
+            <hr style="color: black;">
+            <h5>Oops The Page Is Not Found</h5>
+        </div>
+    </div>
+</div>
+_____________________________________________________________
+
+
+
+in my app.js file I can use the app.use method for a middleware which will check if
+the path does exsit and the server can response with a page:
+
+
+_____________________________________________________________
+
+app.use((req, res) => {
+  res.status(404);
+  res.render("404page", { title: "Page 404" });
+});
+
+
+_____________________________________________________________
+
+line 26: I need to rewrite the status code of the request to 404 so the search engine and the 
+browser will know it doesn't exist.
+
+another Important thing to remember is for that middleware to work only in cases which the path 
+doesn't exist and not in everycase I need to put this code at the very bottom of the app.js file
+right before the "app.listen()" line.
