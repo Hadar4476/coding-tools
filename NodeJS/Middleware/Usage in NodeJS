@@ -1,0 +1,4 @@
+examples for middlewares in NodeJS:
+
+=> app.use(bodyParser.urlencoded({ extended: false })); //body-parser
+=> app.use(express.static("public")); // static files
