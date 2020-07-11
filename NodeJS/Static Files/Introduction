@@ -1,0 +1,33 @@
+Lets say that in my main.handlebars I want to link a script and that script
+will be use as an alert for something or even a validation for my
+contact.handlebars form.
+
+first of all it common among programmers to create a public folder,
+inside that public folder to create 3 folders:
+- images
+- js
+- css
+
+in my main.handlebars file I'm going to use <script> tag that its source(src) will be:
+
+=> <script src="js/script.js"></script>
+
+in that script.js file I will just alert("Hello I'm here").
+
+now if I will refresh that localhost:3000 I can't see the alert, more than that if
+I press f12 and got to network and refresh again I can see "script.js" in red
+and if I click on headers I can see that the status code is "404 not found", which means
+it can't reach this file.
+
+how can I make it work?
+I can set a get method in the app.js for that script but what if it's not just one script
+but 50 or not even scripts, lets say I have 500 images in my server I want to display,
+typing app.get for each one is not a good solution.
+
+instead I can do it like this:
+in the app.js file:
+
+=> app.use(express.static("public"));
+
+means that the use method is a middleware that can help me use all my files in the public folder as static files,
+which means I don't have to type app.get a thousand times.
