@@ -1,0 +1,11 @@
+First, a middleware is a very popular concept while working with framework.
+lets say I have an application, and there is a certain page which is only accesable for
+a user who wrote a right email and password(sign in).
+I need to check the user data(email and password in this case) I can use a middleware which
+will check the request data that was sent according to what I decide.
+if the data is valid response with the page if not - don't.
+the middleware pops in the middle of the proccess when the request from the browser is sent 
+to the server.
+
+for example:
+the use method in express is used for middlewares.
