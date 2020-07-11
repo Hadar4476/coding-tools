@@ -1,0 +1,45 @@
+for the validation, first I will create a js file:
+
+script.js:
+
+=> $("#contact-form").validate({
+=>   rules: {
+=>     fullname_field: {
+=>       required: true,
+=>       minlength: 3,
+=>       maxlength: 70,
+=>     },
+=>     email_field: {
+=>       required: true,
+=>       email: true,
+=>     },
+=>     phone_field: {
+=>       required: true,
+=>       minlength: 9,
+=>       maxlength: 10,
+=>       digits: true,
+=>     },
+=>   },
+=> });
+
+line 5: getting the form's id and starting the validate method.
+line 6: the validate method takes an object with property "rules".
+line 7,12 & 16: this property/object will need to be identical to the input's name attribute.
+line 8,13 & 17: telling the validate that these fields are required - means you can't continue
+                if those fields are empty or have false information according to the validate rules.
+line 9 & 18: the minlength property is telling the validate how many minimun characters we want the user
+             to enter inside that field.
+line 10 & 19: the maxlength property is the same as minlength but just as a maximum length espect.
+line 14: we want to validate that this is an email field so it will give all the properties of a proper email
+         and will display relevant errors.
+line 20: we want to set the phone field as digits only.
+
+must mention that when we will enter a false data inside those fields we will get an error.
+that error is a label that adds to the bottom of the input, that label has .error class which I can style 
+in a css file and give it color = red for example:
+
+  .error{
+    color:"red";
+  }
+  
+
