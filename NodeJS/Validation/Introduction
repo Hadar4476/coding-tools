@@ -25,3 +25,6 @@ becuase it's faster in client-side.
 which library is good for validations?
 
 jquery validate: https://jqueryvalidation.org/
+
+working cdn: https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.js
+
