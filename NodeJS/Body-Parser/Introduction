@@ -1,0 +1,6 @@
+The body-parser module is useful for getting the data after submitting a form,
+we want to access the data and do something with it: inset it into a database,
+display it to the user, save it etc.
+
+if I won't use the body-parser and type console.log(req.body) in the app.post(<some path>)
+I will get the value - undifiend.
