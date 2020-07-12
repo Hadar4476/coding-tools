@@ -1,0 +1,225 @@
+Rules in Regex and How To?
+__________________________
+
+1. Regular expressions always start and end with / (/ <word, character, letter, number, etc.> /).
+
+2. If I write only a word, letter, character or number within the regular expression (/ /),
+regex will perform a simple search on the data, without a template,
+that is, it will find the data simply as its meaning.
+
+regular expression: /hadar/
+
+string:             hadar yamin
+                    _____
+        
+3. Regex is case sensetive(big and small letters).
+
+        
+        
+        
+Modes,What does that mean?
+_________________________
+
+1) GLOBAL MODE:
+
+For example, suppose I have searched for a word that appears several times,
+by default in javascript as long as I do not specify "status" at the end of
+the regular expression, it will always search and bring only the first instance
+in which the word appears. Therefore this mode needs to be changed to a global mode.
+how? In this way: / blablabla / g.
+It is very important to note that the syntax of using situations is done by writing them out of expression.
+
+without global mode:
+___________________
+
+regular expression: /hadar/
+
+string:             hadar yamin hadar yamin
+                    _____
+        
+        
+with global mode:
+________________
+
+regular expression: /hadar/g
+
+string:             hadar yamin hadar yamin
+                    _____       _____
+            
+       
+       
+       
+2) INSENSETIVE MODE:
+
+this mode is for making the regular  expression not case sensetive(insensetive).
+
+without insensetive mode:
+________________________
+
+regular expression: /hadar/
+
+string:             HADAR yamin 
+
+
+
+with insensetive mode:
+_____________________
+
+
+regular expression: /hadar/i
+
+string:             HADAR yamin 
+                    _____
+        
+
+3) MULTILINE MODE:
+
+Supports situations that the data we want to look for is not just in one row (line down)
+but in another, below it. 
+* Not so important in javascript according to Shlomi.
+
+usage in regular expression:
+___________________________
+
+regular expression: /hadar/m
+
+
+
+
+- SIGNS - 
+
+1. the dot sign(.): there are two usages for this sign:
+                    - finding the actual sign ".", how?
+                    
+                    regular expression:  /\./
+                    
+                    string:              hadar yamin.
+                                                    _
+                       
+                    - finding all characters, digits & signs individually(means all), how?
+                    
+                     regular expression:  /./
+                    
+                    string:              hadar yamin.
+                                         ____________
+                                         
+                                  
+
+2. create a set([]). lets say I would like to find the letters "h" and "Y":
+                     I can use a set to tell regex, I want you to find this by a set 
+                     of these, how?
+                        
+                     regular expression:  /[hY]/
+                    
+                     string:              hadar Yamin.
+                                         _
+                             
+                     *important thing to note here*
+                     since I havn't used global mode(g), regex found the first case
+                     it encountered.
+                     
+                     to fix it I can type like this:
+                     
+                     regular expression:  /[hY]/g
+                    
+                     string:              hadar Yamin.
+                                          _     _
+                                          
+ 
+3) set a range( [-] ). lets say I want to check only for digits between 0-9 in my string.
+                       I can combine set and range. how? like this:
+                       
+                        regular expression:  /[0-9]/g
+                    
+                        string:              0505640800 8699377
+                                             __________ _______
+                          
+                        
+                        *important thing to note here*
+                        regex found each digit individually in this case.
+                        the range dosen't have to be from 0-9, A-Z or a-z
+                        it can be, for example:
+                        [2-6], [4-5],[3-9]
+                        [b-f],[h-o],[a-w]
+                        [C-E],[T-S],[K-R]
+                        
+                        as long as the order of the range is logicly possible
+                        regex will find the contant.
+                        
+                        types of sets:
+                        
+                        /[0-9]/ - for digits between 0 to 9.
+                        /[A-Z]/ - for big letters only between A to Z.
+                        /[a-z]/ - for small letters only between a to z.
+                        
+                        an alternatives for not using /[A-Za-z]/ : 
+                        
+                        - /[0-9A-Z]/gi 
+                        - /[0-9A-z]/g
+
+
+4)find except( ^ ). this sign is called chaos and is used for finding 
+                    notes except specific notes. how? like this:
+                    
+                    regular expression: /[^0-9]/gm
+                    
+                    string            : hadar yamin 1234567
+                                        ____________
+                  
+                  
+
+5) an alternative for [0-9] ( \d ). a shortcut for digit,
+                                    usage:
+                                    
+                                    regular expression: /\d/
+                                    
+                                    string            : hadar yamin 123456
+                                                                    ______
+                                                                    
+                                    except( ^ ) in \d : \D
+                                    
+                                    regular expression: /\D/
+                                    
+                                    string            : hadar Yamin 123456 @#$%^&*
+                                                        ____________      ________
+                                    
+                                    
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                        
+Examples for Regex:
+__________________
+
+1. lets say I want to find s specific string with regex, something like "!05Ads"
+
+conditions:
+__________
+
+- the first note dosen't have to be a specific type(digit,letter,sign etc), it can be everything.
+- the second note must be 0.
+- the third note must be a digit between 0 to 9.
+- the fourth note must be a big letter only, from A to Z.
+- the fifth note must be a small letter only, from a to z.
+- the last note can be whatever.
+
+solution:
+________
+
+regular expression:   /.0[0-9][A-Z][a-z]./gm
+
+
+                        
+                                     
+                       
+
+        
+
+
+
+
+
