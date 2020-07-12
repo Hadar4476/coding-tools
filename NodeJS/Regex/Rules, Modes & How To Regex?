@@ -184,10 +184,176 @@ regular expression: /hadar/m
                                                         ____________      ________
                                     
                                     
+ 6) how to check for space( " " )? there are three ways to check if there is a space 
+                                   in a string:
+                                   
+                                   - simply clicking the spacebar:
+                                   
+                                   regular expression: / /g
+                                   
+                                   string            : hadar yamin hi
+                                                            _     _
+                                                            
+                                   - putting a space in range:
+                                   
+                                   regular expression: /[ ]/g
+                                   
+                                   string            : hadar yamin hi
+                                                            _     _
+                                   
+                                   the third way is using \s.how? like this:
+                                   
+                                   regular expression: /\s/g
+                                   
+                                   string            : hadar yamin hi
+                                                            _     _
+                                                            
+                                   
+7) combination of diffrent ranges: lets say that I want to find if the string
+                                   contains small & big letters, digits from 0 to 9
+                                   and also bottom line ( _ ). there are to ways to do
+                                   that. how? like this:
+                                   
+                                   first option: /[A-Za-z0-9_]/gm
+                                   
+                                   second option:
+                                   using the \w sign which means it will find A to Z, a to z
+                                   0 to 9 and bottom line ( _ ) but ONLY bottom line, not other
+                                   special signs. 
+                                   
+                                   usage: /\w/gm
+                                   
+                                   except( ^ ) in \w : \W
+                                   
+8) it may appear - condition( ? ): this sign is used for telling regex: "this note may apear before
+                                   what I want you to find". for example, lets say I want to find
+                                   the combination of "hi", but some string contains that "hi" and
+                                   there may be a letter before that "hi".
+                                   
+                                   regular expression: /[A-z]?hi/gm
+                                   
+                                   string            : hi
+                                                       __
+                                                       bhi
+                                                       ___
+                                                       
+                                                       ccccc
+                                                       
+                                                       ccChi
+                                                         ___
+                                                         
+                                                       ddDhi
+                                                         ___
+                                                         
+                                                       dhi
+                                                       ___
+                                                       
+                                                       ddddddd
+                                                       
+                                                       
+                                   *important thing to note here:
+                                   when I'm making a usage of "?" he will check only one note
+                                   that comes before what I want regex to find.
+                                   
+                                   a solution would be using the duplicate sign( * ), right before 
+                                   the ? sign(after the optional note). means "I know that this is optional
+                                   but choose all the string anyways".
+                                   
+                                   *another important thing to note here that if there is a digit or other sign
+                                   before what we want to find like "9hi" regex won't consider it with * because it
+                                   dosen't meet our condition.
+                                   
+                                   usage:
+                                   
+                                   regular expression: /[A-z]*?hi/gm
+                                   
+                                   string            : hi
+                                                       __
+                                                       bhi
+                                                       ___
+                                                       
+                                                       ccccc
+                                                       
+                                                       ccChi
+                                                       _____
+                                                         
+                                                       ddDhi
+                                                       _____
+                                                         
+                                                       dhi
+                                                       ___
+                                                       
+                                                       ddddddd
+                                                       
+                                   
+                                                                                                         
                   
-                  
-                  
-                  
+9) the individuality problem ( + ): as I mentioned if I don't use some special sign like
+                                    *, regex will find each note individualiy and not the whole
+                                    string. for fixing this I need to use the plus( + ) sign.
+                                    the plus sign is very useful with sets and its role is: "choose
+                                    every note in that string as one word/string".
+                                    
+                                    usage: /[a-z]+/g
+                                    
+                                    
+                                    
+10) limit number of notes with curly brackets ( {} ): with curly brackets I can set a limit to
+                                                      how many notes I want regex to find:
+                                                      
+                                                      regular expression: /\d{3}/gm
+                                                      
+                                                      string            : 123
+                                                                          ___
+                                                                          
+                                                                          4444
+                                                                          ___
+                                                                          
+                                                                          555555
+                                                                          ______
+                                                                          
+                                                                          666666666
+                                                                          _________
+                                                                          
+                                                                          77776
+                                                                          ___
+                                                                          
+                                                                          3311133
+                                                                          ______
+                                                                          
+                                                                          
+                                                      *important thing to note here:
+                                                      the searching dosen't stop at some point. means that if
+                                                      that regex won't find only strings that contain 3 notes ONLY.
+                                                      if other strings contain 3 notes it will find them and take them,
+                                                      even if that string has 3 notes twice (6) notes, as long as the
+                                                      number of notes is divisible with 3 it will take it(BUT ONLY THE PART
+                                                      OF THE DIVISIBLE). its like regex is starting a new string.
+                                                      
+                                                      
+                                                      there is also an option to set a min and max of range with {}:
+                                                      
+                                                      regular expression: /\d{2,4}/gm
+                                                      
+                                                      string            : 1
+                                                      
+                                                                          4444
+                                                                          ____
+                                                                          
+                                                                          555556
+                                                                          ______
+                                                                          
+                                                                          666666666
+                                                                          ________
+                                                                          
+                                                                          7777
+                                                                          ____
+                                                                          
+                                                                          3311133
+                                                                          _______
+                                                                          
+                                                        
+                                                        in this case I've set a min of 2 notes and max of 4.
                   
                   
                   
