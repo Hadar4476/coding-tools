@@ -529,7 +529,7 @@ __________
 - the first letter must be a big letter in english or any letter in hebrew.
 - all notes must be characters.
 - the string can't contain a space(  ) before the first name and after the last name only in-between.
-- the string can't contain dots( . ) or commas( , ).
+- the string can't contain dots( . ) or commas( , ) if a dot or comma is already set ( (?!.*\s\s)(?!.*\.\.)(?!.*,,)  ).
 - it must have it least 2 notes with a limit of 30 notes.
 - it must end with a character.
 
@@ -543,8 +543,3 @@ regular expression:  /^(?!.*\s\s)(?!.*\.\.)(?!.*,,)[א-תA-Z][א-תA-z .,]{2,30}
                        
 
         
-
-
-
-
-
