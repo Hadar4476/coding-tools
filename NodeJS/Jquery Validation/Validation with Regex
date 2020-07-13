@@ -1,0 +1,47 @@
+because jquery validate dosen't have a preset for regex I need to call
+the validator plugin from jqeury, this validator plugin has a method called
+addMethod which takes 3 argumments: 
+
+1) how do I want to call my method/function?
+like: required,minlength,maxlength, in this case I want to call it regex. 
+
+2) the second method is an anonymus function which takes 3 argumments aswell: value - the
+plugin jquery validation return us the input of the userv/value. element - this is
+the field which I activated this preset(regex in this case) and the plugin will activate
+the preset on this field. I can execute attributes like: html, class, id etc.
+the third one - regexp - means to determinate that my preset will get certain data,
+in this case this is the value which the preset should check - a regexp value.
+
+3) an error I want to display if the regexp dosen't match the value of the field.
+
+usage:
+
+
+$.validator.addMethod(
+  "regex",
+  (value, element, regexp) => {
+    // console.log(regexp);
+    // console.log(value);
+    // console.log(element);
+    return new RegExp(regexp).test(value);
+  },
+  "A Valid Phone Number Is Required"
+);
+
+$("#contact-form").validate({
+  rules: {
+    fullname_field: {
+      required: true,
+      minlength: 3,
+      maxlength: 70,
+    },
+    email_field: {
+      required: true,
+      email: true,
+    },
+    phone_field: {
+      required: true,
+=>    regex: /^0[0-9]\d{7,8}$/,
+    },
+  },
+});
