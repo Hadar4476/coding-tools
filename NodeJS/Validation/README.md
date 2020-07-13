@@ -1,1 +1,1 @@
-All you need to know about form validation.
+All you need to know about form validation with jquery validation.
