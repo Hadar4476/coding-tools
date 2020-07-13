@@ -88,7 +88,7 @@ regular expression: /hadar/m
 
 - SIGNS - 
 
-1. the dot sign(.): there are two usages for this sign:
+1) the dot sign( . ): there are two usages for this sign:
                     - finding the actual sign ".", how?
                     
                     regular expression:  /\./
@@ -105,7 +105,7 @@ regular expression: /hadar/m
                                          
                                   
 
-2. create a set([]). lets say I would like to find the letters "h" and "Y":
+2) create a set( [] ). lets say I would like to find the letters "h" and "Y":
                      I can use a set to tell regex, I want you to find this by a set 
                      of these, how?
                         
@@ -165,7 +165,13 @@ regular expression: /hadar/m
                     
                     string            : hadar yamin 1234567
                                         ____________
-                  
+                              
+                    also, the except sign determinante how to string should
+                    start, for example:
+                    
+                    regular expression: /^[^Y]+/gm
+                    string            : Hadar Yossi
+                                        _____
                   
 
 5) an alternative for [0-9] ( \d ). a shortcut for digit,
@@ -356,7 +362,148 @@ regular expression: /hadar/m
                                                         in this case I've set a min of 2 notes and max of 4.
                   
                   
-                  
+
+11) how it should end? ( $ ): the dollar sign ( $ ) determinante how the string should end.
+                              examples:
+                              
+                              - 1 -
+                              
+                              regular expression: /\.(png|jpg|gif|jpeg)$/gm
+                              
+                              string            :
+                                                  image.png.pdf
+                                                  
+                                                  image.jpg
+                                                       ____
+                                                       
+                                                  demo.gif
+                                                      ____
+                                                      
+                                                  demo.jpeg.text
+                                                  
+                             - 2 -
+                             
+                             regular expression: /.+?r$/gm
+                             
+                             string            : hadar
+                                                 _____
+                                                 
+                                                 amir
+                                                 ____
+                                                 
+                                                 ron
+                                                 
+                              - 3 -
+                              finding only numbers:
+                              
+                              regular expression : /^\d+$/gm
+                              
+                              string             : 0386ffff999
+                                                   
+                                                   8699377
+                                                   _______
+                                                   
+                                                   0505640800
+                                                   __________
+                                                   
+                                                   1234567
+                                                   _______
+                                                   
+                                                   111yytgfd1
+                                                  
+                                              
+                              
+
+13)groups & or ( () | ). lets say I want to tell regex to find me a
+                         string that matches an item from a group of items:
+                         
+                         regular expression: /(hadar|amir|yossi|vidran)/gm
+                         
+                         string            : hadar yamin
+                                             _____
+                                             
+                                             amir yamin
+                                             ____
+                                             
+                                             yossi shaish
+                                             _____
+                                             
+                                             vidran abramovich
+                                             ______
+                                             
+                          *important thing to note here:
+                          by default regex will store this group () inside of a var
+                          so if I want to use it again, in php for example I can call that
+                          var whenever and reuse it. the problem is that now this group is 
+                          saved on the internal memory of the machine, something that can 
+                          cause a bed performence.
+                          I can slove it like this:
+                          
+                          regular expression: /(?:hadar|amir|yossi|vidran)/gm
+                          
+                          
+                         
+14) look ahead assertions( LAAS ): there are two kinds of LAAS, positive and negative
+                           these LAAS are for telling regex, before you are checking something
+                           check if this exists in the string.
+                           
+                           - Positive - 
+                           for the positive LAA, I'm checking if the wanted note does exists
+                           in my string and if it does find it and return it.
+                           
+                           example:
+                           I want to check if there is a big letter in the string, if there
+                           is find it and return it to me.
+                           
+                           regular expression: /^(?=.*[A-Z])\w+$/gm
+                           
+                           string            : dummy
+                                               
+                                               teXt
+                                               ____
+                                               
+                                               hellO
+                                               _____
+                                               
+                                               Hi
+                                               __
+                                               
+                                               hello_world
+                                               
+                              
+                            
+                            
+                           - Negative - 
+                           for the negative LAA, I'm checking if the wanted note does exists
+                           in my string and if it does find it and DO NOT return it.
+                           
+                           example:
+                           I want to check if there is a big letter in the string, if there
+                           is find it and DO NOT return it to me.
+                           
+                           regular expression: /^(?!.*[A-Z])\w+$/gm
+                           
+                           string            : dummy
+                                               _____
+                                               
+                                               teXt
+                                               
+                                               hellO
+                                               
+                                               Hi
+                                               
+                                               hello_world
+                                               ___________
+                                               
+                                               
+                                               
+                                               
+                                               
+
+
+
+
+ 
                         
 Examples for Regex:
 __________________
