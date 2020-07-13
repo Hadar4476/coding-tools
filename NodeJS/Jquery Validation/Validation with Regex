@@ -45,3 +45,13 @@ $("#contact-form").validate({
     },
   },
 });
+
+now if I'm using Joi in my app.js I can chenage the contactSchema for example to this:
+
+ const contactSchema = Joi.object({
+   fullname_field: Joi.string().required().min(2).max(70),
+   email_field: Joi.string().required().email(),
+=> phone_field: Joi.string().regex(/^0[0-9]\d{7,8}$/),
+ });
+ 
+ 
