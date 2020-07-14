@@ -1,0 +1,24 @@
+Another constraint that can be set on a table is called AUTO INCREMENT or A_I for short
+(as it appears in the phpmyadmin interface) but can only be set on a column defined as PRIMARY KEY.
+Mysql server in sequential numerical order (in ascending order). This setting is excellent
+for example for a column named id so that each new record will have its own unique id in
+ascending order automatically in order.
+
+in the next query we will create a new table called users_demo in which we will define the column
+id as the main key of the table (primary key) and we will define this column which will get its
+values automatically by the setting AUTO_INCREMENT. As UNIQUE and the column description as FULLTEXT index:
+
+CREATE TABLE IF NOT EXISTS users_demo (
+  id int(11) NOT NULL AUTO_INCREMENT,
+  name varchar(255) NOT NULL,
+  email varchar(255) NOT NULL,
+  password varchar(255) NOT NULL,
+  profile_image varchar(255) NOT NULL,
+  description text NOT NULL,
+  updated_at datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  created_at datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (id),
+  KEY name (name),
+  UNIQUE KEY email (email),
+  FULLTEXT KEY description (description)
+  ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
