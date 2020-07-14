@@ -1,0 +1,8 @@
+The IN function is actually a quick and convenient replacement for OR.
+It allows us to give a number of options when we place a certain condition
+on received records. In the following example, we would like to retrieve information 
+from an employee table, but we would only want employees who live either in Tel Aviv
+or in Ramat Gan. We can use the IN function to do this:
+
+=> SELECT firstName,lastName,city FROM employees 
+   WHERE city IN('Tel Aviv', 'Ramat Gan');
