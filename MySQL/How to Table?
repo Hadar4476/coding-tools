@@ -121,5 +121,40 @@ if nothing will pass to this column while adding a new record, for the "active_f
 column I've set the default value of CURRENT_TIMESTAMP which means, because it is a 
 date type of date, I can set the default value to be the current time(now).
 
+alter table:
+
+mysql server is allowing me to make changes with the structure of my table with
+ALTER TABLE command, so after creating the table I can add columns or change some
+settings of existing columns or even delete columns.
+after creating the table "departments":
+
+CREATE TABLE IF NOT EXISTS departments
+ (
+  id int(11) NOT NULL,
+ code char(3) NULL,
+ name varchar(255) NOT NULL,
+ description text NOT NULL,
+ created_at datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+ locator decimal(10,2) NOT NULL
+ );
+ 
+changing an existing column:
+---------------------------
+
+lets say I want to change the amount of characters the column "code" can contain:
+
+=> ALTER TABLE departments MODIFY code char(5);
 
 
+adding new column:
+-----------------
+
+lets say I want to add a new column and I can also say after which column I want to add that column:
+
+=> ALTER TABLE departments ADD COLUMN phone varchar(255) NOT NULL AFTER name;
+
+
+deleting a column:
+-----------------
+
+=> ALTER TABLE departments DROP COLUMN locator;
