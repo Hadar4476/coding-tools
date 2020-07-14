@@ -1,0 +1,48 @@
+Data types are the types of information that exist on the
+mysql server with which we will define columns when creating the table.
+
+
+Data types:                                         Typical data types:
+__________                                          __________________ 
+
+________________________________________________________________________________________________________________________
+                                                    
+ 
+                                                    - INT - integer up to 11 characters.
+Numeric                                             - FLOAT - Floating number up to 4 characters to the right of the dot.
+                                                    - DECIMAL - A floating number by defining a number of characters.
+                                                    - TINYINT - An integer with one character.
+                                                    - BIGINT - integer up to 19-21 characters.
+                                                    
+_________________________________________________________________________________________________________________________ 
+
+                                                 
+Strings:                                            - CHAR - Fixed-length character string (up to 255 characters).
+                                                    - VARCHAR - variable string of characters (between 15000 and 65000 
+                                                      characters depending on the encoding method).
+                                                    - TEXT - Large character string (up to 64kib in size).
+                                                    - LONGTEXT - Very large character string (up to 4gib in size).
+                                                     
+_________________________________________________________________________________________________________________________ 
+
+Boolean:                                            - There is no such thing but you can set TINYINT
+                                                      to contain the values 0 or 1. 
+                                                     
+_________________________________________________________________________________________________________________________  
+
+Dates:                                              - DATE - Only classic British date (Y-m-d).
+                                                    - DATETIME - A date that also includes time in the classic 
+                                                      British format (Y-m-d H: i: s).
+                                                    - TIMESTAMP - Unix Time (integer).
+                                                    - TIME - Only time in the classic British format (H: i: s).
+                                                    - YEAR - Only a year in the classic British format (Y).
+
+_________________________________________________________________________________________________________________________  
+
+Specials:                                           - NULL - Indicates a value but only works with columns of a 
+                                                      given type of scissors.
+                                                    - BLOB - For storing small files and binary information.
+                                                    
+_________________________________________________________________________________________________________________________                                                      
+                                                    
+                                                    
