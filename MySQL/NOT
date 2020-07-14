@@ -1,0 +1,19 @@
+The sentence NOT will constitute a negation of the sentence or
+function that follows it. This statement can be placed before almost
+any function or statement after which it will bring the exact opposite result.
+In the following example, we would like to extract from the product table all
+products whose price is not (NOT) between 50 and 100. We can do this with the help
+of NOT and with the combination of BETWEEN. We will sort the order of results
+by price in ascending order:
+
+NOT BETWEEN:
+
+=> SELECT title,price FROM products
+   WHERE price NOT BETWEEN 50 AND 100
+   ORDER BY price;
+   
+   
+NOT IN:
+
+=> SELECT firstName,lastName,city FROM employees
+   WHERE city NOT IN('Tel Aviv', 'Ramat Gan');
