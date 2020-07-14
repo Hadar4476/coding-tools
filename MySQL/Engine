@@ -1,0 +1,61 @@
+mysql server is using two engines for executing storing and getting data from tables:
+
+- InnoDB
+- MyISAM
+
+while creating a table it is possible to define which engine will support the mysql server,
+for storing the data inside that table. it is important to mention that is not a must thing to
+define -the default engine is InnoDB but there are some differences:
+
+
+InnoDB:                                                       MyISAM:
+
+_____________________________________________________________________________________________________________________
+
+- Newer                                                            - Oldest
+      
+- Default engine                                                   - Not default anymore
+      
+- Is more useful for working with large amount                     - Less useful for working with large amount
+  of data                                                            of data
+        
+- good performance under load                                      - not so good performance under load
+      
+- Supports transactions                                            - Does not support transactions
+      
+- Fast writing for tables(not locking/blocking the                 - Slow writing for tables(does lock/block from
+  file from reading or writing in parallel connections)              reading or writing in parellel connections)
+        
+- Performs slightly retrieval operations a little slower           - Performs retrieval operations a little bit faster
+
+- Until the latest versions do not allow to perform a search       - Allows you to perform a search (full text search) and 
+ (full text search) and create indexes on text-type fields           create indexes on Text-type fields
+
+_________________________________________________________________________________________________________________________
+  
+
+there are more engines that mysql server can get supported by, but they are less popular
+and were meant for specific tasks. 
+
+however, mysql server is supported by the following engines:
+
+- Memory - a table which is saved only in the ram memory and restarts with every restart of
+  the database.
+- BlackHole - a blackhole table, it is not really saving the data anywhere.
+- Archieve - an archive table, which can manage a great amount of data, but will cost
+  functionality.
+- CSV - comma seperated values.
+
+
+defining an engine:
+
+   CREATE TABLE IF NOT EXISTS cities 
+    (
+    id int(11) NOT NULL,
+    name varchar(255) NOT NULL
+    ) 
+=>  ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+  
+       
