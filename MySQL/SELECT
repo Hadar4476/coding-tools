@@ -1,0 +1,32 @@
+the select command is useful for receiving data from a table.
+there is a possibility to mention which columns I want to get data from,
+from the table.
+the * sign means all columns:
+
+=> SELECT * FROM categories;
+
+receiving data from specific columns:
+
+=> SELECT title,price FROM products;
+
+SELECT & WHERE:
+
+=> SELECT firstName,lastName,city FROM employees
+   WHERE city = 'Tel Aviv';
+   
+in this case I want to receive data from the firstName,lastName and city columns from the employees
+table but only where the value for the rows that their city column's value is equal to 'Tel Aviv'.
+
+
+operators:
+
+there is a possibility to use operators with WHERE condition:
+- less then ( < )
+- greater then ( > )
+- equal to ( = )
+
+for example:
+
+=> SELECT title,price FROM products
+   WHERE price > 100;
+
