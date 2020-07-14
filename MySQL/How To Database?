@@ -1,0 +1,72 @@
+Create a database:
+
+There are two ways to create a database in MySql:
+
+- via the Shell interface with a query: CREATE DATABASE database_demo;
+- via the visual interface - phpmyadmin.
+
+*important thing to note:
+it is impossible to create two databases with the same name,
+if I do so it will lead me to this error: "Can't create database database exists".
+
+Collation, what is that?
+
+Collation is a definition of the method of encoding the data stored in tables
+as well as a set of rules and regulations regarding the encoding of characters
+and symbols. By default when we create a database the encoding method is latin1_swedish_ci
+which does not allow for example data storage in Hebrew etc. etc. but only in English and
+Swedish (originally mysql was developed by a Swedish company). 
+Of course you can do that later in the CREATE DATABASE statement:
+
+=> CREATE DATABASE database_demo_2 CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+- utf8: means, storing data for any kind of language.
+- utf8_general_ci: a general and recommanded encodiong method of the encoding method utf8.
+- ci: means, case insensitive - setting the database to case insensitive.
+
+Show databbases:
+
+I can also check my databases with a command in the Shell interface:
+
+=> SHOW DATABASES;
+
+or:
+
+=> SELECT * FROM INFORMATION_SCHEMA.SCHEMATA;
+
+
+Use database:
+
+=> USE database_demo;
+
+
+Delete a database:
+
+When I query a database using a query I can use the DROP DATABASE statement after
+which I will specify the name of the database I want to delete. It should be emphasized
+that deleting a database will delete all the tables and records that that database contains.
+By default mysql server does not back up the database so it is advisable to back up the database before deleting.
+
+How to back up a database:
+
+- open phpmyadmin.
+- click the database you want to back up.
+- press export(ייצוא).
+- change Format to SQL.
+- click on go(ביצוע).
+
+
+How to import a database:
+
+first, I need to use a certain database with USE *some database name*,
+then, I want to type the following command
+
+=> SOURCE *file location - can be executed with right clicking a file - properties - location*\*some sql file name*.sql
+
+* important thing to note:
+
+The SOURCE command must not end with a semicolon. It is also possible that the 
+sql file on your computer is in a different folder and probably not in the above code!
+
+
+
