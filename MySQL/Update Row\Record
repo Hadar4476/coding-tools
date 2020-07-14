@@ -1,0 +1,12 @@
+the update command is for changing and editing values of an existing row,
+in the next query I will update the phone number of a row which
+this row's id's value is equal to 1:
+
+=> UPDATE contact_log SET phone = '086663321' WHERE id = 1;
+
+sometime I would like to update all the fields of a row, in this case I wont
+use WHERE.
+
+update multi fields:
+
+=> UPDATE contact_log SET name = 'Avi 2',phone = '0529987456' WHERE id = 1;
