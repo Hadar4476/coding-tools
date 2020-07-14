@@ -1,0 +1,125 @@
+After accessing the database with USE database_demo,
+I can type the command - CREATE TABLE *table name*.
+while creating a table, I need to define the table's schema,
+means, which columns I want the table to have and which data type
+will a certain column hold. 
+it is impossible to create a table with no columns, at least 1 column.
+
+=> CREATE TABLE customers
+   (
+   id int(11) NULL,
+   name varchar(30) NOT NULL,
+   city char(3) NOT NULL,
+   phone varchar(20) NOT NULL
+   );
+   
+in this example I've created a table "customers", inside that table there are the
+following columns:
+- id: will contain data of type of int, integers and a limit of notes = 11.
+- name: will contain data of type string with a changing length and a max characters of 30.
+- city: will contain data of type string with a permanent length of 3 characters.
+- phone: will contain data of type string with a changing length and a max characters of 20.
+
+NULL or NOT NULL is for defining what will be the value of the column if nothing will get pass
+there, defining NULL is only for a column with data type of INT etc.
+
+Show tables in database:
+
+after using the database with USE *database's name* and creating a table with CREATE TABLE *table's name*
+there is a command for showing these tables:
+
+=> SHOW TABLES;
+
+* important thing to note:
+it is possible to create a table but in must have a unique name.
+if I try to create a table with the same name of an existing table I will get an error from mysql
+server:
+
+=> CREATE TABLE customers
+   (
+   id int(11) NULL,
+   name varchar(30) NOT NULL,
+   city char(3) NOT NULL,
+   phone varchar(20) NOT NULL
+   );
+=> error 1050(42S01): Table 'customers' already exists
+
+for me to avoid these error I can set a condition while creating a table,
+and the command of creating a table will only be executed if the table does not exists:
+
+=> CREATE TABLE IF NOT EXISTS customers
+   (
+   id int(11) NULL,
+   name varchar(30) NOT NULL,
+   city char(3) NOT NULL,
+   phone varchar(20) NOT NULL
+   );
+=> Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+Example for using more data types in the creation proccess:
+
+=>   CREATE TABLE IF NOT EXISTS data 
+    (
+    log_id int(11) NOT NULL,
+    title varchar(255) NOT NULL,
+=>  description text NOT NULL,
+=>  date datetime NOT NULL,
+=>  price decimal(10,2) NOT NULL,
+=>  showen tinyint(1) NOT NULL
+    );
+
+columns:
+- description: will contain data of type string with no limit to amount of characters(text).
+- date: will contain data of type date(date time).
+- price: will contain data of type decimal, float type, 10 is for the limit of notes and 2 is 
+  for limit of notes after the dot ( . ).
+- showen: will contain data of type boolean, tinyint(1) is for limit the note length to one,
+  which will determine if the value is true(1) or false(0).
+  
+describe a table:
+
+I can ask for mysql server to show the table structure plus the data type of
+each column:
+
+=> DESC data;
+
+
+default value & NOT NULL:
+
+there is a possibility to define a column a default value in case
+of adding new records to the table if I will not pass a value to these columns.
+the meaning of NOT NULL is if I'm not passing any value to a column when I'm
+adding a record the value of that column won't be NULL, but something else
+(depending on the given type of that column). for example, I will define a column
+which will contain data of type string but I will set the value of that column to
+NOT NULL, means, that if nothing will get passed to this coulmn, its value will be 
+an empty string and not NULL.
+
+for example, if I will create a table with the CREATE TABLE command and define
+the value of a certain column with date type of int as NOT NULL, then add a new record 
+and not pass a value to this column, the value of that column will set to 0 as default and
+not NULL etc.
+
+mysql server is allowing me to define a column which will not receive a value during
+the addition of new record but will receive a default value which I can define.
+
+for example, I will create a table named "suppliers" and I will define some diffrent 
+default values so if I will add a new record and not pass any values to these columns,
+these columns will receive the default value I've defined.
+
+    CREATE TABLE IF NOT EXISTS suppliers 
+    (
+    id int(11) NOT NULL,
+=>  sup_name varchar(255) NOT NULL DEFAULT 'not supplied',
+    desc_text text NOT NULL,
+=>  active_from datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    operative tinyint(1) NOT NULL
+    );
+
+in this example I've set the default value of the "sup_name" column to be "not supplied"
+if nothing will pass to this column while adding a new record, for the "active_from"
+column I've set the default value of CURRENT_TIMESTAMP which means, because it is a 
+date type of date, I can set the default value to be the current time(now).
+
+
+
