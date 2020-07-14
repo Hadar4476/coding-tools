@@ -1,0 +1,19 @@
+the command LIMIT is for limiting the number of rows I want to select,
+for example I want to receive the data from firstName,lastName and city columns, inside
+employees table but only for rows which their status field is equal to 1, plus I want to order
+the data by lastName in a ASC way defaultly. I also want to limit this data to 2 rows:
+
+=> SELECT firstName,lastName,city FROM employees
+   WHERE status = 1 
+   ORDER BY lastName 
+   LIMIT 2;
+   
+the command SKIP(OFFSET) means how many rows we want to skip until the limit is executed.
+if I want mention the skip with just typing LIMIT 3, SKIP will be equal to 0, that is why
+I'm receiving the first 3 cases.
+
+In the following example, I will retrieve information from the products table,
+but I will skip the first 2 records (skip) and bring up 3 records after the skip (limit):
+
+=> SELECT title,price FROM products 
+   LIMIT 2,3;
