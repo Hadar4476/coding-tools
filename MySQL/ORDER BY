@@ -1,0 +1,30 @@
+mysql server is allowing me to order the received rows with the ORDER BY command.
+there are three types of ordering:
+
+- ASC : ascending, means sort in ascending order, from the lowest value to the highest or a - z.
+- DESC : descending, means sort in descending order, from the highest value to the lowest.
+- RAND() : random, means sort randomly.
+
+example for ASC:
+
+=> SELECT title,price FROM products
+   WHERE price >= 75 
+   ORDER BY price ASC;
+   
+   
+example for DESC:
+
+=> SELECT firstName,lastName,city FROM employees
+   ORDER BY lastName DESC;
+   
+   
+example for RAND():
+
+=> SELECT firstName,lastName,city FROM employees ORDER BY RAND();
+
+massive ordering:
+
+mysql server is allowing to sort by more than one criterion:
+
+=> SELECT firstName,lastName,city FROM employees
+   ORDER BY lastName ASC,firstName ASC;
