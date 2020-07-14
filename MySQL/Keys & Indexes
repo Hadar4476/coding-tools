@@ -1,0 +1,41 @@
+"Constraints" can be placed on columns so that they change the behavior
+and data retention of the records that will be under those columns.
+These constraints are called indexes or in some cases also keys.
+There are several indexes that can be set on columns and below is a table
+that summarizes each of them and the differences between each index and index:
+
+
+Index type:                            Description:
+----------                             -----------
+
+- Primary key                         - The primary key is the unique identifier of a row (record) in a table.
+                                      - In most cases this is a field (column) named id.
+                                      - Each row has its own id that can point to one row in the table exactly.
+                                        There can be no two lines with the same value of a master key
+                                        (I.e. with the same id) as there can be no array of two elements
+                                        with the same key
+                                      - Of course there is no obligation to call the main field id
+                                        or to have numbers at all, But yes the values of the Primary key field
+                                        must be different from line to line to identify the line uniquely. 
+                                      - The order of getting the results by default will be in the order of
+                                        the values in the Primary key field (But can be requested in a different way).  
+                                        
+ 
+ 
+ - Unique key                         - Unique This is a limit on the data in a particular column that says that in
+                                        each row in the table, the value of this column must be different, unique.
+                                      - There can be no two rows in a table that have the same value in a 
+                                        column defined as Uniqe.
+                                        
+ 
+- Index                               - This option is given to a field (column) from which multiple retrievals are made,
+                                        Because the database relies on it to find the data.
+                                      - Improves the speed of retrieving data under this column.
+                                      - The search is usually by the LIKE statement or by REGEXP.
+                                      
+- FULLTEXT                           - Supported by MyISAM and starting with mysql version 5.6.0 also by InnoDB
+                                     - Works only on columns that contain text type information like char, varchar, text
+                                     - The mysql server indexes each and every word that is valued under the same column.
+                                     - Great for free searching of long and functional text like a search engine.
+                                     - The search syntax is different and uses the MACTH + AGAINST statement.        
+                                     
