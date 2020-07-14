@@ -1,0 +1,8 @@
+Schema, this is a definition that describes how we want the table to look and
+what components it will contain. The mysql server does not allow the creation
+of tables without "pre-planning" in which we define which columns the table will
+have and which data type each column will contain. And there are a number of other
+settings that we will define a table when we create a new table on the mysql server.
+Therefore Schema is a diagram of the same table and description of the table we want
+to create and we on the mysql server (unlike other database software like MongoDB) must
+give such a description of the table structures, the parts it will contain, and the data types it will include.
