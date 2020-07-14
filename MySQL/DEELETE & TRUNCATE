@@ -1,0 +1,33 @@
+for deleting data/rows from a certain table I can use the DELETE FROM
+command, if I won't mention which row I want to delete with WHERE condition-
+all the record will get deleted:
+
+=> DELETE FROM contact_log WHERE id = 1;
+
+* important thing to note:
+
+if I will want to delete all, not use the condition WHERE, then mysql server
+will delete the whole table.
+
+there is another for deleting the row of a certain table but keep the table and
+the columns:
+
+TRUNCATE TABLE contact_log;
+
+the diffrence between DELETE & TRUNCATE:
+---------------------------------------
+
+if will delete all the rows from a table with DELETE command - 
+a column which has A_I and primary key won't receive the value of 1 after
+using the DELETE COMMAND, instead it will receive the A_I number - deleting
+all rows won't reset the general data on the table.
+uf
+
+
+
+
+
+
+
+
+
