@@ -1,0 +1,12 @@
+the WHERE command is used for stating a condition for receiving
+data, I can add another condition with OR:
+
+=> SELECT firstName,lastName,city FROM employees
+   WHERE city = 'Tel Aviv' OR city = 'Ramat Gan';
+   
+
+there also a possibility to use AND, means that these two conditions must be true:
+
+=> SELECT firstName,lastName,city,status FROM employees
+   WHERE city = 'Ramat Gan' AND status = 1;
+
