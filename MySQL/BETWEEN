@@ -1,0 +1,9 @@
+The BETWEEN state is allowing us mainly in working with columns that contain
+numerical information and helps us to set conditions of a range from a certain
+number to a certain number. In the following example we would like to extract
+from the product table products whose price ranges from 50 (inclusive) to 100
+(inclusive) and for this purpose we use the BETWEEN statement:
+
+=> SELECT title,price FROM products
+   WHERE price BETWEEN 50 AND 100;
+   
