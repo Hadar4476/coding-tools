@@ -17,17 +17,9 @@ TRUNCATE TABLE contact_log;
 the diffrence between DELETE & TRUNCATE:
 ---------------------------------------
 
-if will delete all the rows from a table with DELETE command - 
+if I will delete all the rows from a table with DELETE command - 
 a column which has A_I and primary key won't receive the value of 1 after
 using the DELETE COMMAND, instead it will receive the A_I number - deleting
 all rows won't reset the general data on the table.
-uf
-
-
-
-
-
-
-
-
-
+in the other hand, if I were to delete rows with TRUNCATE command, the table will
+reset and won't save any general data on it.
