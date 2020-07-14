@@ -3,4 +3,3 @@ I should run xampp-control.exe, after that click the shell button and open
 XAMPP cmd, type "mysql -u root -p" to start the mysql server.
 it is possible with pressing the Admin button in MySQL line in the GUI(XAMPP control)
 to enter http://localhost/phpmyadmin/ or I can type this in the browser.
-
