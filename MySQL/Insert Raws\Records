@@ -1,0 +1,44 @@
+how to add records/rows into a table?
+
+for example, I will add a new row to categories table, the categories table is
+built like this(DESC categories):
+
+
+
+Field         Type                 Null      Key       Default      Extra
+__________________________________________________________________________________
+id            int(11)              NO        PRI       NULL         auto_increment
+
+name          varchar(255)         NO                  NULL
+
+machine_name  varchar(255)         NO                  NULL
+
+
+
+
+now for the inser of a new row:
+
+=> INSERT INTO categories VALUES('','New cat','new-cat');
+
+I don't have to pass id because it is defined as primary key and A_I(auto increment),
+my sql server will take care of the value automatically.
+
+
+
+multi insert:
+
+there is a possibility to insert multi rows:
+
+=> INSERT INTO categories VALUES
+=> ('','New cat 2','new-cat-2'),
+=> ('','New cat 3','new-cat-3'),
+=> ('','New cat 4','new-cat-4');
+ 
+
+insert into specific columns:
+
+sometimes I would like to insert a new row but only pass data from that row to specific column or columns"
+
+=> INSERT INTO contact_log(name,phone) VALUES('Name demo 3','036630012');
+
+
