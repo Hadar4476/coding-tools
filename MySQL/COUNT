@@ -1,0 +1,40 @@
+mysql server has many functions and other options with running queries.
+
+COUNT function:
+
+allows counting row.
+
+for example:
+
+=> SELECT COUNT(*) FROM products;
+
+* important thing to note:
+if a certain row we would like to include in our count will have values of NULL,
+the rows won't count because the function COUNT dosen't count NULL values.
+
+alias(AS):
+
+after running COUNT, the given name of the received field is "COUNT(*)" by default.
+I can change it with adding AS:
+
+=> SELECT COUNT(*) AS total FROM products;
+
+* important thing to note:
+with the modern versions of mysql and mariadb there is no need to mention AS,
+it is enough to state the alias after the COUNT function:
+
+=> SELECT COUNT(*) total FROM products;
+
+
+
+COUNT DISTINCT:
+
+The DISTINCT statement helps us to sift records whose values are the same so
+that we can only get unique values when we run different queries:
+
+=> SELECT COUNT(DISTINCT city) amount FROM employees
+   WHERE status = 1;
+   
+   
+
+
