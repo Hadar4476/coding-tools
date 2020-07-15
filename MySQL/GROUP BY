@@ -1,0 +1,53 @@
+the GROUP BY state is helpful for grouping data by a certain criterion,
+so we can receive data by groups. GROUP BY is using the DISTINCT state automaticly.
+
+in the example I will want to group all the cities from the "employees" table by a city:
+
+=> SELECT city FROM employees
+   GROUP BY city;
+   
+result:
+
+city:
+----
+Petach Tikva
+Ramat Gan
+Tel Aviv
+Uno
+
+GROUP and COUNT:
+
+it is possible to add more information when using GROUP BY state.
+
+in the next example I would like to get the amount of employees living in the same city:
+
+=> SELECT city,COUNT(*) AS amount FROM employees
+   GROUP BY city;
+
+result:
+
+city:                   amount:
+----                    ------
+Petach Tikva            2
+Ramat Gan               2
+Tel Aviv                2
+Uno                     1
+
+using conditions:
+
+in the next example I would like to get the amount of employees living in the same city but only
+from rows that their status is equal to 1:
+
+=> SELECT city,COUNT(*) AS amount FROM employees
+   WHERE status = 1
+   GROUP BY city
+   ORDER BY city ASC;
+   
+result:
+
+city:                   amount:
+----                    ------
+Petach Tikva            2
+Ramat Gan               1
+Tel Aviv                2
+
