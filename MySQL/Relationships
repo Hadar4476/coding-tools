@@ -1,0 +1,55 @@
+Relationships means connection between tables. by joining tables I can
+receive data from a group of tables.
+mysql server is working by a model of relative data base or in other words:
+relational database management system(RDBMS).
+by this model I can "spread" data from an original data source to more than one tables.
+
+types of relationships:
+
+- one to one relationship
+- one to many and many to one relationship
+- many to many relationship
+- self referencing relationship
+
+the connection between diffrent is used by a column that its values is equal in 
+2 tables, on one side table A with column of PRIMARY KEY and on the other side table B
+which is called "foreign key":
+
+- a column, in one table, that is defined as "foreign key" is used to relate to another PRIMARY KEY column
+  in other table.
+- basically, this is a column of a "child table" that is relative to a "parent table".
+- for creating a connection between a column from one table to a column from another table: both columns must
+  be PRIMARY KEY.
+- one table can contain a number of connections by a "foreign key" to diffrent tables(for example: "roles" table).
+
+example for one to one relationship:
+
+                    - Users Table -                                                    - Avatar  Table -
+                    
+     id:    name:          email:                  password:                      id:     image:            user_id:
+     1      Hadar          hadar4476@gmail.com     1234567                        1       hadar.jpg         1
+     2      Amir           amir@gmail.com          8699377                        2       amir.jpg          2
+     3      Amit           amit@gmail.com          445533321                      3       amit.png          3
+     4      Yaniv          yaniv@gmail.com         432423423                      4       yaniv.jpg         4
+     ^                                                                                                      ^ 
+     |______________________________________________________________________________________________________|
+     
+
+* the id column in "users" table is connected to the user_id column in the "avatar" table.
+
+
+example for one to many relationship:
+
+     
+ - Categories Table -                                         - Products Table -
+                    
+id:    name:                 id:   categorie_id:   machine_name:             title:              body:              price:   
+1      Desktop computers     1     1               some machine name         some machine title  some machine body  54.3       
+2      Laptops               2     2               Dell-XPS 15               some dell title     some dell body     26          
+3      Computer monitors     3     3               bla bla                   bla bla             bla bla            337.5        
+                             4     2               Asus                      Asus title          asus body          420.4
+                             5     1               AMD                       AMD title           AMD body           75
+                                  
+                                  
+* in this case the column "id" in the "categories" table is present in the column "categorie_id" in the "products" table
+more than once.
