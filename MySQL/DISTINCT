@@ -1,0 +1,15 @@
+the DISTINCT is helpful for mapping through rows which their values are the same, 
+so I can receive unique values when I will run queries.
+
+in the example below I would like to receive the distinct city from the "employees"
+table but only from row that their satus is equal to 1:
+
+=> SELECT DITINCT city FROOM employees WHERE status = 1;
+
+result:
+
+city:
+----
+Ramat Gan
+Petach Tikva
+Tel Aviv
