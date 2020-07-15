@@ -1,0 +1,35 @@
+before I start there a much wider explanation on NodeJS/REGEX folder.
+
+in mysql the REGEXP state is useful for searching with REGEX.
+
+in the example below I want to search employees from the "employees" table which 
+their city they live in start with the letter R or T.
+
+=> SELECT firstName,lastName,city FROM employees
+   WHERE city REGEXP '^[RT]';
+   
+result:
+
+firstName:            lastName:              city:
+---------             --------               ----
+
+Avi                   Aviel                  Ramat Gan
+Haya                  Bitun                  Tel Aviv
+Moshe                 Cohen                  Ramat Gan
+Israel                Israeli                Tel Aviv
+
+
+in the next example I would like to find employees that their name
+contains only 4 characters:
+
+=> SELECT firstName,lastName,city FROM employees
+   WHERE firstName REGEXP '^.{4}$';
+   
+result:
+
+firstName:            lastName:              city:
+---------             --------               ----
+
+Haim                  Moshe                  Petach Tikva
+Haya                  Bitun                  Tel Aviv
+        
