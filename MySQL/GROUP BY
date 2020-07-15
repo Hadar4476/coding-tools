@@ -51,3 +51,36 @@ Petach Tikva            2
 Ramat Gan               1
 Tel Aviv                2
 
+
+GROUP and SUM:
+
+in the next example I would like to get the cost of all products under some categorie:
+
+=> SELECT categorie_id,ROUND( SUM(price), 2 ) total FROM products
+   GROUP BY categorie_id;
+   
+result:
+
+categorie_id:       total:
+------------        -----
+1                   129.30
+2                   446.40
+3                   337.50
+
+
+GROUP and AVG:
+
+in the next example I would like to get the average cost from all products under some categorie:
+
+=> SELECT categorie_id,ROUND( AVG(price), 2 ) avg FROM products
+   GROUP BY categorie_id;
+   
+result:
+
+categorie_id:       total:
+------------        -----
+1                   64.65
+2                   223.20
+3                   337.50
+
+
