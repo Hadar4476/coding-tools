@@ -1,0 +1,26 @@
+the HAVING state is an optional while working with GROUP BY state.
+this is useful for stating a condition or conditions on rows after grouping these rows.
+In contrast to the WHERE state which allows conditions on rows and their original data,
+the HAVING state allows stating conditions on rows after grouping the data(including data
+that don't actually exist in the original table).
+
+in the next example I would like to count how many employees are living in each city but
+we want to receive only cities which there are more than 1 employee.
+
+=> SELECT city,COUNT(*) AS amount FROM employees
+   GROUP BY city HAVING amount > 1;
+   
+result:
+
+city:                   amount:
+----                    ------
+
+Petach Tikva            2
+Ramat Gan               2
+Tel Aviv                2
+
+
+*important to note:
+the HAVING state is known for "devourering" resources and is not very useful when talking about
+performance, but there is a possibility to state a condition with WHERE and it is more 
+recommanded than HAVING.
