@@ -1,0 +1,53 @@
+the LIKE function is useful for searching
+
+* important signs to remember:
+
+- (%) = stands for any combination of notes, not only a single note, not case sensetive.
+- (_) = stands for a single note.
+
+example for %:
+
+=> SELECT title,price FROM products
+   WHERE title LIKE 'D%'; // possible: WHERE title LIKE 'd&';
+   
+result:
+
+title:                                             price:
+-----                                              -----
+
+Dell XPS 15                                        26
+Dell IPS UltraSharp U3014                          337.5
+
+
+before & after:
+
+in the next example I would like to search products under the "products" table,
+but only execute their title and price, and I only want to find products that their
+title or body contains the string "games".
+
+for example:
+
+=> SELECT title,price FROM products
+   WHERE title LIKE '%games%' OR body LIKE '%games%'
+   ORDER BY price;
+   
+result:
+
+
+title:                                             price:
+-----                                              -----
+
+Comp games XX6 alfa                                54.3
+
+
+example for _:
+
+in the next example I would to combine % with _.
+I would like to search for employees which works in cities that the name of the city
+start with the letter R, the name ends with 2 letters and after those letters "n" will come as last letter.
+
+=> SELECT firstName,lastName,city FROM employees
+   WHERE city LIKE 'R%__n';
+   
+
+
