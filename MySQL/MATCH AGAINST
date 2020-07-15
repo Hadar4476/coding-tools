@@ -1,0 +1,32 @@
+the MATCH and AGAINST states are helpful for searching columns that are
+defiend as FULLTEXT index(ONLY). these states are also useful for doing a quick search on
+long texts. the search can be by a letter or a word, but the performance costs alot
+when searching on long and big texts.
+
+example:
+
+the search with MATCH and AGAINST need to be executed by the following steps:
+
+* the MATCH state will receive the name of the column in ().
+* the AGAINST state will receive the word or letter I would like to search for in().
+
+*important to note:
+
+in case the table or the database will be defined with utf8_general_ci, the search
+won't be case sensetive.
+
+in the example below I would like to search the word "gallery" from the post column at
+"articles" table:
+
+
+=> SELECT * FROM articles
+   WHERE MATCH(post) AGAINST('galley');
+   
+
+MATCH, AGAINST and OR:
+
+=> SELECT * FROM articles
+   WHERE MATCH(post) AGAINST('galley') 
+   OR MATCH(post) AGAINST('sometimes');
+   
+   
