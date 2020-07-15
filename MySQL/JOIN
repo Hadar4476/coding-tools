@@ -1,0 +1,18 @@
+there are several types to "JOIN":
+
+- INNER JOIN
+- LEFT JOIN
+- RIGHT JOIN
+- JOIN
+
+there is no diffrence between JOIN and INNER JOIN because the default behavior of
+mysql server while using JOIN is to use the INNER JOIN instead.
+
+example:
+
+=> SELECT c.name,p.title,p.price FROM products p
+   JOIN categories c ON c.id = p.categorie_id
+   WHERE p.visibility = 1
+   ORDER BY p.price
+   LIMIT 3;
+   
