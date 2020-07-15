@@ -1,0 +1,51 @@
+the function DATE_FORMAT is one of the most common and built-in functions while
+working with mysql server. it used for receiving data of a certain date & time.
+it is effective on date, datetime and timestamp types etc. the way that mysql
+server is saving the date is in the classic british format(Y-m-d/ Year-Month-Day).
+I can use this function to set the format to the israeli format for example(d-m-Y).
+this function receives 2 arguments:
+- the date: a column or an original date.
+- the format.
+
+example:
+
+=> SELECT firstName,lastName, 
+   DATE_FORMAT(createdAt, '%d/%m/%Y') AS joined_at FROM employees
+   ORDER BY joined_at;
+   
+
+
+list of signs:
+
+% a Abbreviated name on weekdays (Sunday to Saturday)
+% b Abbreviated month name (January to December)
+% c Numeric month name (0 to 12)
+% D day of the month as a numeric value, followed by an suffix (1, 2, 3, ...)
+% d Day of the month as a numerical value (01 to 31)
+% e day a month as a numerical value (0 to 31)
+% f microseconds (000000 to 999999)
+% H Hour (00 to 23)
+% h Hour (00 to 12)
+% I Hour (00 to 12)
+% in minutes (00 to 59)
+% j Anniversary (001 to 366)
+% k Hour (0 to 23)
+% l Hour (1 to 12)
+% M Full month (January to December)
+% m Name of month as numeric value (00 to 12)
+% p AM or PM
+% r Time in the format of 12 hours in the morning or afternoon (hh: mm: ss AM / PM)
+% S seconds (00 to 59)
+% s seconds (00 to 59)
+T% time in 24 hours format (hh: mm: ss)
+% U Week where Sunday is the first day of the week (00 to 53)
+% u Week where Monday is the first day of the week (00 to 53)
+% V Week where Sunday is the first day of the week (01 to 53). Used with% X
+% v A week in which Monday is the first day of the week (01 to 53). Used with% X
+% W Full weekday name (Sunday to Saturday)
+% w Day of the week where Sunday = 0 and Saturday = 6
+% X year to week where Sunday is the first day of the week. Used with% V
+% x year to week where Monday is the first day of the week. Used with% V
+% Y this year as a numeric value, 4 digits
+% y	Year as a numeric, 2-digit value
+   
