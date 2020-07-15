@@ -1,0 +1,12 @@
+the IF function is useful for setting a condition, it receives 3 arguments:
+
+- the first one: the condition.
+- the second one: what will happen if that condition is true.
+- the third one: what will happen if that condition is false.
+
+example:
+
+=> SELECT title,price, 
+   IF(visibility = 1, 'visible', 'not visible') AS vis 
+   FROM products;
+   
