@@ -1,0 +1,30 @@
+a series of functions which used for summarizing, finding max/min number, finding the average
+and also counting:
+
+Function:                Description:
+--------                 -----------
+
+SUM                      summarizing a group of numbers.
+
+AVG                      finding the average in a group of numbers.
+
+MAX                      finding the maximum number.
+
+MIN                      finding the minimum number.
+
+COUNT                    counting the amount of rows.
+
+
+
+finding MAX:
+
+=> SELECT MAX(price) AS mxprice FROM products;
+
+finding MIN with ROUND:
+
+=> SELECT ROUND( MIN(price), 2 ) AS miprice FROM products;
+
+finding AVG:
+
+=> SELECT ROUND( AVG(price), 2 ) AS avg FROM products;
+
