@@ -1,0 +1,9 @@
+the function CONCAT is used for combining 2 columns into 1.
+it receives 3 arguments:
+- the first one, the first column.
+- the second one, what will connect between the columns.
+- the third one, the second column.
+
+example:
+
+=> SELECT CONCAT(firstName, ' ', lastName) AS fullName, city FROM employees;
