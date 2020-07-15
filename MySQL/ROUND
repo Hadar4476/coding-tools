@@ -1,0 +1,19 @@
+the ROUND function is used for rounding floats by the rules of rounding:
+- for example, 0.0 - 0.4, will always round down.
+- for example. 0.5-0.9, will always round up.
+
+=> SELECT ROUND(26.5) AS num;
+
+I can also set how many number I want to display after the . of a float:
+
+=> SELECT ROUND(26.453, 2) AS num;
+
+result: 
+
+num
+___
+26.45
+
+*important thing to note:
+it is possible to set as parameter a name of a column which contains integers.
+
