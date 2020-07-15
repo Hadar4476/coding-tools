@@ -1,0 +1,52 @@
+there are few options for combining data from a number of tables.
+one option is using INNER JOIN state, this state is the most common and most 
+likely done by adding WHERE(or ON) which I will determinate PRIMARY KEY in
+one table which its value is equal to the "foreign key" of another table.
+
+in the next example I would like to receive data from "products" table but also
+join it with "categories" table by taking the categorie_id column ("foreign key"),
+in the "productes" table and merging it with id column (PRIMARY KEY), in the "categories" table:
+
+=> SELECT categories.name,products.title,products.price FROM products,categories
+   WHERE categories.id = products.categorie_id;
+
+
+result:
+
+name:                             title:                             price:
+----                              -----                              -----
+
+Desktop computers                 Comp games XX6 aldfa               54.3
+Laptops                           Dell XPS 15                        26
+Computer monitors                 Dell IPS UltraSharp U3014          337.5
+Laptops                           Asus ZenBook UX301LA-DE065H        420.4
+Desktop computers                 AMD FX-Series Eight Core 8350      75
+
+alias for tables:
+
+=> SELECT c.name,p.title,p.price FROM products AS p,categories AS c
+   WHERE c.id = p.categorie_id;
+   
+* The result of the query will be exactly the same as in the first query but I have shortened
+  the way I refer to each of the tables by the nickname given to them.
+  
+another approach:
+
+=> SELECT c.name,p.title,p.price FROM products p,categories c
+   WHERE c.id = p.categorie_id;
+   
+
+INNER JOIN - ON:
+
+there is an alternative syntax for receiving data from a number of tables.
+the ON state is for condition but must be used with INNER JOIN state:
+
+=> SELECT c.name,p.title,p.price FROM products p
+   INNER JOIN categories c ON c.id = p.categorie_id
+   WHERE p.visibility = 1
+   ORDER BY p.price
+   LIMIT 3;
+   
+
+
+
