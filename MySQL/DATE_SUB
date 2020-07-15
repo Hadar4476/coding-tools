@@ -1,0 +1,41 @@
+the function DATE_SUB is very useful and important while working with dates.
+it return a date written in the classic british format minus another date:
+
+=> SELECT DATE_SUB("2017-06-15", INTERVAL 10 DAY);
+
+result:
+
+2017-06-05
+
+the INTERVAL state stands for "period of time".
+
+list of time states:
+
+- MICROSECOND
+- SECOND
+- MINUTE
+- HOUR
+- DAY
+- WEEK
+- MONTH
+- QUARTER
+- YEAR
+- SECOND_MICROSECOND
+- MINUTE_MICROSECOND
+- MINUTE_SECOND
+- HOUR_MICROSECOND
+- HOUR_SECOND
+- HOUR_MINUTE
+- DAY_MICROSECOND
+- DAY_SECOND
+- DAY_MINUTE
+- DAY_HOUR
+- YEAR_MONTH
+
+example:
+
+let say I want to receive rows from "employees" table that started to work on the last year(only),
+until now. there is a very useful function for that called NOW:
+
+=> SELECT * FROM employees 
+   WHERE createdAt >= DATE_SUB(NOW(),INTERVAL 1 YEAR);
