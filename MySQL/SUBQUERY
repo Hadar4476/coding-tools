@@ -1,0 +1,44 @@
+the SUBQUERY term is meant for using a sub query inside a query.
+SUBQUERY starts and ends with (), for me to tell which is the main query
+and which is the sub.
+
+in the next example I would like to recive data from products table,
+from title and price columns and my condition is only receive data by
+the fact that the price value is greater than what the sub query returns,
+which is the avg price of the products.
+
+=> SELECT title,price FROM products
+   WHERE price > (SELECT AVG(price) FROM products);
+   
+result:
+
+      title:             price:
+      ------------------------
+      Dell IPS blabla    337.5
+      ASUS zenbook       420.4
+      
+ 
+SUBQUERY and JOINS:
+
+in the next example I would like to receive in % the sum of all products that belongs
+to a categorie in the categories table:
+
+=> SELECT c.name,
+   ROUND(SUM(p.price) * 100 / (SELECT SUM(price) FROM products),2) percentages
+   FROM products p
+   JOIN categories c ON c.id = p.categorie_id
+   GROUP BY c.name 
+   ORDER BY percentages;
+      
+result:
+
+      name:               percentages:
+      -------------------------------
+      New fish            0.27
+      Desktop computers   14.12
+      Computer monitors   36.86
+      Cellphones          48.75
+      
+
+      
+   
