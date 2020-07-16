@@ -1,0 +1,27 @@
+sometimes I would like to combine data from number of tables
+to receive one result. 
+
+in the next example I would like to combine data from 3 diffrent tables.
+the connection between "users" table and "premissions" table will rely on
+the "role" table(something like a third party):
+
+=> SELECT u.name,p.name pname 
+   FROM users u,roles r,permissions p
+   WHERE u.id = r.uid AND r.role = p.role_id
+   
+   
+result:
+        
+        name:         pname:
+        --------------------------------
+        Admin         admin
+        Israel        authenticated user
+        
+        
+        
+alternative with JOIN:
+
+=> SELECT u.name,p.name pname FROM users u
+   JOIN roles r ON u.id = r.uid
+   JOIN permissions p ON r.role = p.role_id;
+
