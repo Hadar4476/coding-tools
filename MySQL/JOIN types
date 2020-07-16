@@ -1,0 +1,101 @@
+there are several types to "JOIN":
+
+- INNER JOIN
+- LEFT JOIN
+- RIGHT JOIN
+- JOIN
+
+there is no diffrence between JOIN and INNER JOIN because the default behavior of
+mysql server while using JOIN is to use the INNER JOIN instead.
+
+JOIN/INNER JOIN example:
+
+=> SELECT c.name,p.title,p.price FROM products p
+   JOIN categories c ON c.id = p.categorie_id
+   WHERE p.visibility = 1
+   ORDER BY p.price
+   LIMIT 3;
+
+result: 
+
+         name:                              title:                               price:
+         ______________________________________________________________________________
+         Desktop computers                  Comp games XX6 alfa                  54.3
+         Desktop computers                  AMD FX-Series Eight Core 8350        75
+         Computer monitors                  Dell IPS UltraSharp U3014            337.5
+         
+         
+LEFT JOIN example:
+
+the diffrence between connecting two tables with LEFT JOIN is by the condition,
+the condition will only apply on the right table instead of the left table:
+the rows on the left table will be received either way even if they don't have a 
+connection with the rows on the right table.
+
+in the next example I would like to receive a list of employees and their phone numbers,
+but I also would like to receive employees which does not possess a phone number.
+
+=> SELECT e.firstName,e.lastName,p.phone FROM employees e 
+   LEFT JOIN phones p ON e.employeeID = p.employeeID;
+   
+result:
+
+                firstName:   lastName:      phone:
+                ___________________________________
+                Dikla        Alon         024113265
+                Dikla        Alon         048876542
+                Avi          Aviel        NULL     <--------------
+                Vered        Levi         036654198
+                Haim         Moshe        050669425
+                
+                
+following the result above, I can see that the employee "Avi Aviel" does not
+have a phone number but despite this fact he is still included in my combined table.
+because while using LEFT JOIN state is used for getting data from all rows even if
+a certain row's value inside a table isn't connected to other column in another table.
+
+* important to note:
+
+each time I would like to get data which some rows does not have a connection to other rows
+I can use LEFT JOIN. using JOIN/INNER JOIN is forcing me to get data that is only connected
+by a matter.
+
+
+RIGHT JOIN example:
+
+there is not much diffrence between RIGHT JOIN and LEFT JOIN, the fact that
+while using RIGHT JOIN - the table which I would like to receive data from will
+be on the right side and not the left side according to the JOIN state.
+
+=> SELECT e.firstName,e.lastName,p.phone FROM phones p 
+   RIGHT JOIN employees e ON e.employeeID = p.employeeID;
+   
+result:
+
+                firstName:   lastName:      phone:
+                ___________________________________
+                Dikla        Alon         024113265
+                Dikla        Alon         048876542
+                Avi          Aviel        NULL     <--------------
+                Vered        Levi         036654198
+                Haim         Moshe        050669425
+                
+                
+                
+* important to note:
+
+most programmers would prefer LEFT JOIN state for onvenience.
+while using LEFT JOIN the left table is the "main" table.
+
+
+
+                
+                
+                
+                
+                
+
+
+
+            
+         
