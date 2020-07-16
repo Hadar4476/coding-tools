@@ -1,0 +1,18 @@
+JOIN is used for combining and grouping data from several tables.
+
+in the next I would like to receive data form products and categories tables.
+I want to get the amount of products per category but I only want the name 
+of the category.
+
+=> SELECT c.name,COUNT(*) amount FROM products p
+   JOIN categories c ON c.id = p.categorie_id
+   GROUP BY c.name;
+   
+result:
+
+        name:                 amount:
+        ----------------------------
+        Computer monitors     1
+        Desktop computers     2
+        Laptops               2
+        
