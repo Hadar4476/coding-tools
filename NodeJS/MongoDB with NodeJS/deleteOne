@@ -1,0 +1,38 @@
+lets say I want to delete a user for users collation in eshop database:
+
+the requiring:
+
+=> const mongoose = require("mongoose");
+
+the connecting:
+
+=> mongoose.connect("mongodb://localhost/eshop",{
+    useUnifiedTopology: true,
+    useNewUrlParser: true,
+   })
+   .then(()=>{
+     console.log("connected to mongodb");
+   })
+   .catch(err => {
+     console.log(err);
+   });
+   
+   
+  the schema:
+  
+ => const userSchema = mongoose.Schema(
+     {
+       name:String,
+       email: String,
+       password: String,
+     });
+
+the model:
+
+=> const User = mongoose.model("User",userSchema);
+
+now for the actual deleting by id:
+
+=> User.deleteOne({_id:"5f1188fb0b5dfb48c0903245"})
+   .then(res => console.log(res));
+   
