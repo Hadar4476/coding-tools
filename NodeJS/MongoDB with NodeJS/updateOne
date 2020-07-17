@@ -1,0 +1,41 @@
+for updating I will the previous code from the insertOne file first:
+
+the requiring:
+
+=> const mongoose = require("mongoose");
+
+the connecting:
+
+=> mongoose.connect("mongodb://localhost/eshop",{
+    useUnifiedTopology: true,
+    useNewUrlParser: true,
+   })
+   .then(()=>{
+     console.log("connected to mongodb");
+   })
+   .catch(err => {
+     console.log(err);
+   });
+   
+   
+  the schema:
+  
+ => const userSchema = mongoose.Schema(
+     {
+       name:String,
+       email: String,
+       password: String,
+     });
+
+the model:
+
+=> const User = mongoose.model("User",userSchema);
+
+now, lets say I want to find a user by id and change his name and password:
+
+=> User.findById("5f1188fb0b5dfb48c0903245")
+   .then(user =>{
+   const {name,password} = user;
+   name = "amit nadav";
+   password = "999999"
+   })
