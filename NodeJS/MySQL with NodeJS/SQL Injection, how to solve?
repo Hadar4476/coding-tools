@@ -1,0 +1,26 @@
+while passing values via query I can use the placeholder operator(?).
+for example:
+
+=> const sql = "INSERT INTO contact_log VALUES(null,?,?,?,NOW())";
+
+now the query method will get one more parameter which is the array of
+values:
+
+=> connection.query(
+      sql,
+=>    [fullname_field, email_field, phone_field],
+      (error, results, field) => {
+        if (results.affectedRows) {
+          res.render("thanks", {
+            title: "Thank You",
+            fullname: value.fullname_field,
+          });
+        } else {
+          console.log(error);
+          res.render("contact", {
+            title: "Contact",
+            emails: emails,
+          });
+        }
+      }
+    );
