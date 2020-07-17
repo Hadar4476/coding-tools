@@ -1,0 +1,46 @@
+mongoose commands are written almost similarly to the commands of mongodb but some
+aren't:
+
+insertOne is one of them, lets say I want to insert a new user to my users collation in eshop database:
+
+first I need to create a schema, which means that this is pattern for how will the data look like in my
+collation(users):
+
+=> const userSchema = mongoose.Schema(
+   {
+    name:String,
+    email:String,
+    password: String
+   });
+   
+the mongoose module has a Schema method which receives a literal object,
+this object will receive fields of the document and their type so if I will try 
+to enter a value of number into the name field for example I will get an error(pattern).
+
+after that, I need to create a new model for while using this schema:
+
+=> const User = mongoose.model("User",userSchema);
+
+now for the actual inestOne:
+
+this User model is now equal to a class and it surely have a constructor: the schema.
+I can create an object holding this new model/class and pass to it values:
+
+=> const user = new User({
+     name:"hadar yamin",
+     email:"hadar@gmail.com",
+     password:"123456"
+   });
+   
+after inserting values I need to save all the values of the user const:
+
+=> user.save()
+   .then(result=>{
+    console.log(result);
+   })
+   .catch(err=>{
+    console.log(err);
+   })
+   
+because the save method is returning a promise I can receive in the console if the
+insertOne was successful or not.
