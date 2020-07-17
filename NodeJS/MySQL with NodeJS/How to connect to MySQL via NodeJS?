@@ -1,4 +1,11 @@
-=> const mysql = requrire("mysql")
+first, I need to run the command in terminal/cmd - npm i mysql.
+than requiring that module:
+
+=> const mysql = requrire("mysql");
+
+after that make a connection to the data base with the method createConnection
+which recives a literal object with properties of host, user, password and the database
+I would like to use:
 
 
 => const connection = mysql.createConnection({
@@ -8,13 +15,26 @@
 =>  database: "eshop",
    });
    
+for the actual connection:
    
 => connection.connect();
+
+for the query to the database:
+=> const sql = "SELECT * FROM products;"
+
+after that, the query method gets 2 parameters:
+
+1) the query.
+
+
+2)an anonymus function:
+- the error, which will be displayed like in the Shell interface, if it did successfully could get data or not: can be a Syntax error etc.
+- the data which will be recived via the query
+- and the collation, the fields
+
 => connection.query(sql, (err, data, collation) => {
      if (err) console.error(err);
-     else {
-       console.log(data);
-     }
+     else console.log(data);     
    });
    
    
