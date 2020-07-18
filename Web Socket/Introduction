@@ -5,5 +5,5 @@ the technique that was previously accepted as "non-pulling", which had quite a f
 - Falls in the communication and more.
 web socket does not use http and https protocols, which do not allow two-way communication, 
 only ex-duplex communication (a user must send a request to the server). While web socket, 
-works on pcp / ip protocol. So that we can open two-way communication without the need to send requests, that is, full-duplex.
+works on tcp / ip protocol. So that we can open two-way communication without the need to send requests, that is, full-duplex.
 Nowadays, web socket, are used for online chats, video streaming, online computer games, push notification and more.
