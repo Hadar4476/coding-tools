@@ -1,0 +1,136 @@
+first, for me to use socket.io module I need to run the command:
+
+npm i socket.io
+
+then reuire it using the express and http modules:
+
+   const app = require("express")();
+   const server = require("http").createServer(app);
+=> const io = require("socket.io")(server);
+
+then I will just create a route:
+
+=> app.get("/", (req, res) => {
+   res.sendFile(__dirname + "/index.html");
+   });
+   
+now for the connection:
+
+in my index.html file I want to create a live chat:
+
+as I have an input for the messages of the users, a send button and a
+area which I can display these messages:
+
+    <main style="min-height: 900px;">
+          <div class="container text-center">
+            <div class="row">
+              <div class="col-12">
+                <h1>Online Chat With Socket IO</h1>
+                <div class="bg-dark m-auto rounded" style="width: 360px;">
+                  <div
+=>                  id="messages-content"
+                    class="text-left pl-3 pt-3"
+                    style="width: 360px; height: 500px;"
+                  ></div>
+                  <br />
+                  <div class="form-group d-flex justify-content-center m-2">
+                    <input
+=>                    id="message"
+                      style="width: 300px; height: 40px; resize: none;"
+                      name="message"  
+                      class="form-control mb-2"
+                    />
+                    <input
+=>                    id="send-btn"
+                      type="button"
+                      value="Send"
+                      class="btn btn-primary mb-2 ml-1"
+                    />
+                    <br />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+     </main>
+     
+* as I can see in the arrows, I gave each element an id to represent the events it is going
+  to execute.
+  
+  
+for working easily with those elements I will link jquery and socket io at the bottom:
+
+=> <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+=> <script src="/socket.io/socket.io.js"></script>
+
+now, I will create my own script for the events:
+
+in this script I have created below the cdns I need to connect to the NodeJS server,
+and I can do this by running the following method:
+
+=> var socket = io.connect();
+
+after that I will need to start a click event on my send button using jquery:
+
+=> $("#send-btn").on("click",function(){
+   });
+
+this callback function will use the socket varable and emit an event: "input" which will get executed in NodeJS.
+than the emit method will get the input field for the message value and send it.
+finaly I would like to reset that value so it won't be permanent:
+
+=> socket.emit("input", $("#message").val());
+   $("#message").val("");
+   
+   
+final result:
+
+=> $("#send-btn").on("click", function () {
+      socket.emit("input", $("#message").val());
+      $("#message").val("");
+   });
+   
+
+now I want to create an event which will trigger by socket.on,
+this event will be "new" event and I will pass an anonymous function to it
+with value of the message field. finally I would like to 
+append to the messages area(the actual chat) a new message.
+I can do this by creating an element which its html will be the value of the message
+field and also append this element to my div(messages-content):
+
+=> socket.on("new", (ms) => {
+   var message = document.createElement("p");
+   message.innerHTML = ms;
+   message.className =
+   "bg-white w-75 rounded-right text-primary rounded-left border border-dark p-2";
+    $("#messages-content").append(message);
+   });
+   
+   
+for sending a message while click the "Enter" key I can add the following:
+
+
+=>    message.addEventListener("keyup", (e) => {
+        if (e.keyCode === 13) {
+          e.preventDefault();
+          $("#send-btn").click();
+        }
+      });
+      
+now in my server side(app.js file):
+
+after requiring socket.io in server side and connecting socket.io in the html to the server in NodeJS,
+I will need to tell NodeJS what to do when connection has established:
+
+=> io.sockets.on("connect",(socket) => {
+     socket.on("input"),(ms) => {
+       io.sockets.emit("new",ms)
+     });
+   });
+
+on connection I will receive the socket with all its event, now on the "input" event I will recceive the
+value of message now I want to send it and create a new message with the "new" event, so I will call it
+and pass the value to it.
+
+
+
