@@ -1,0 +1,7 @@
+lodash is a module for mapping through objects and arrays, like underscore.
+
+for example, lets say I have an object "user" and I want to respond with a 
+message but only with certain fields:
+
+=> res.send(_.pick(user,["id","name","email"])); // look in NodeJS/Projects with Shlomi/my-rest-api-copy/routes/users.js for
+                                                    better understanding
