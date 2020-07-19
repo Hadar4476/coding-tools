@@ -1,0 +1,39 @@
+<div class="container">
+    <div class="col-12 mt-3 d-flex text-center justify-content-around">
+        <div class="ml-auto">
+            <h1 class="display-3">Contact Us Page</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti, exercitationem!</p>
+        </div>
+        <div class="text-left ml-2">
+            {{# if emails}}
+            <h1>Our Support:</h1>
+            <ul class="list-group col-12">
+                {{# each emails}}
+                <li class="list-group-item">{{ this }}</li>
+                {{/each}}
+            </ul>
+            {{else}}
+            <h1 class="d-none"></h1>
+            {{/if}}
+        </div>
+    </div>
+</div>
+<div class="container border border-dark rounded p-5 mt-5 col-4">
+    <form id="contact-form" class="col-10" method="POST" action="" novalidate="novalidate" autocomplete="off">
+        <div class="form-group">
+            <label for="fullname-field">Your Fullname:</label>
+            <input type="text" class="form-control" name="fullname_field" id="fullname-field">
+        </div>
+        <div class="form-group">
+            <label for="email-field">Email Address:</label>
+            <input type="email" class="form-control" name="email_field" id="email-field">
+        </div>
+        <div class="form-group">
+            <label for="phone-field">Phone Number:</label>
+            <input type="tel" class="form-control" name="phone_field" id="phone-field">
+        </div>
+        <div class="text-right">
+            <button type="submit" class="btn btn-primary rounded">Send</button>
+        </div>
+    </form>
+</div>
