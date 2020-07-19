@@ -26,3 +26,13 @@ for setting the password to the encoded password using bcrypt's hash method whic
 - the variable that hold the genSlat method(salt).
 
 => user.password = await bcrypt.hash(user.password,salt);
+
+in the next example I want to simulate a situation when the user signed up to my website,
+and now he wants to sign in. because I used the hash method(check NodeJS/Projects with Shlomi/my-rest-api-copy/routes/users.js for
+more info) I don't have a way to validate the req.body.password the user sends to my password in the database.
+what I can use is bcrypt.compare method(check NodeJS/Projects with Shlomi/my-rest-api-copy/routes/auth.js for
+more info), what this method will do is "remembering" how the encoded password looked like and will "compile" it
+to the original password which the user send:
+
+=>  const validPassowrd = await bcrypt.compare(password, user.password);
+
