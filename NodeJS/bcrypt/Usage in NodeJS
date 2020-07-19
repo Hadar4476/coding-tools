@@ -1,0 +1,28 @@
+bcrypt is a module for encoding senstive information like user's password etc.
+
+first, I will need to run the command:
+
+=> npm i bcrypt
+
+after that lets say that I have a mongoose model called "User", this model
+receives as parameter the req.body, which is basically the user information.
+now while I'm getting this information the password isn't encoded, if I won't
+use bcrypt everyone who has access to my database can see my users passwords.
+
+to slove it, first I need a variable to hold that model:
+
+=> let user = new User(req.body);
+
+and then, there is some term in bcrypt called "salt" and it use for holding
+a method of bcrypt called genSalt which returns a promise, and this method receives
+as parameter the saltRounds which has a meaning in google just need to look it up:
+
+=> const salt = await bcrypt.genSalt(10);
+
+for setting the password to the encoded password using bcrypt's hash method which receives
+2 parameters:
+
+- the sensetive data I would like to encode.
+- the variable that hold the genSlat method(salt).
+
+=> user.password = await bcrypt.hash(user.password,salt);
