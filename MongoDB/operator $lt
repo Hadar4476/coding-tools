@@ -1,4 +1,4 @@
-The operator $it is equal to <(less than)
+The operator $lt is equal to <(less than)
 In the example below I want to get all the documents that their ticketPrice value is less than 52.
 
 db.ads.find( {"ticketPrice": {$lt:52} } ).pretty()
