@@ -1,4 +1,4 @@
-The operator $ite is equal to =<(less than equals)
+The operator $lte is equal to =<(less than equals)
 In the example below I want to get all the documents that their ticketPrice value is less than and equals 52.
 
 
